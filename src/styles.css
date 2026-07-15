@@ -649,6 +649,12 @@ textarea {
   color: var(--lake-deep);
 }
 
+.form-note a {
+  color: var(--lake-deep);
+  font-weight: 600;
+  text-underline-offset: 0.18em;
+}
+
 .form-note[hidden] {
   display: none;
 }
