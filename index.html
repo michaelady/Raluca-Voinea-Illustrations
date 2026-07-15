@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raluca Voinea Illustration — Painter & Illustrator</title>
+    <meta
+      name="description"
+      content="Raluca Voinea Illustration — painter and illustrator based in Neuchâtel, Switzerland. Fantasy-inspired digital art, commissions, murals, and open collaborations."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="logo" href="#top">Raluca Voinea</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#services">Collaborate</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="#contact">Start a project</a>
+      </nav>
+      <button class="menu-toggle" type="button" aria-label="Open menu" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+    </header>
+
+    <div class="mobile-nav" data-mobile-nav hidden>
+      <a href="#work">Work</a>
+      <a href="#services">Collaborate</a>
+      <a href="#about">About</a>
+      <a href="#contact">Start a project</a>
+    </div>
+
+    <main id="top">
+      <section class="hero" aria-label="Introduction">
+        <div class="hero-media">
+          <img
+            src="/artwork/coming-back.jpg"
+            alt="Coming Back — digital illustration by Raluca Voinea of two glowing bears overlooking a night city valley"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="hero-content">
+          <p class="brand-mark">Raluca Voinea Illustration</p>
+          <h1>Painter &amp; illustrator in Neuchâtel</h1>
+          <p class="hero-lead">
+            Fantasy-inspired digital art and custom commissions — open to new
+            collaborations with brands, publishers, and local spaces.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Let’s collaborate</a>
+            <a class="btn btn-ghost" href="#work">Explore the portfolio</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section work" id="work">
+        <div class="section-head">
+          <h2>Selected works</h2>
+          <p>
+            Digital pieces from
+            <a href="https://ralucavoinea.artweb.com/" target="_blank" rel="noopener noreferrer"
+              >ralucavoinea.artweb.com</a
+            >
+            — portraits, atmospheres, and tributes.
+          </p>
+        </div>
+
+        <div class="filters" role="tablist" aria-label="Filter works">
+          <button class="filter is-active" type="button" data-filter="all" role="tab" aria-selected="true">
+            All
+          </button>
+          <button class="filter" type="button" data-filter="atmosphere" role="tab" aria-selected="false">
+            Atmosphere
+          </button>
+          <button class="filter" type="button" data-filter="figure" role="tab" aria-selected="false">
+            Figures
+          </button>
+          <button class="filter" type="button" data-filter="tribute" role="tab" aria-selected="false">
+            Tributes
+          </button>
+        </div>
+
+        <div class="gallery" data-gallery>
+          <article class="piece" data-category="atmosphere figure" style="--d: 0">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/snow-poem.jpg" alt="Snow Poem" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Snow Poem</span>
+                <span class="piece-tag">Digital · Fantasy inspired</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece piece-wide" data-category="atmosphere" style="--d: 1">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/her-mind.jpg" alt="Her Mind" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Her Mind</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="atmosphere figure" style="--d: 2">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/silence.jpg" alt="Silence" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Silence</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece piece-wide" data-category="atmosphere" style="--d: 3">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/coming-back.jpg" alt="Coming Back" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Coming Back</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="figure" style="--d: 4">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/break-dancer.jpg" alt="Break Dancer" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Break Dancer</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="atmosphere" style="--d: 5">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/la-nuit.jpg" alt="La Nuit" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">La Nuit</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="atmosphere" style="--d: 6">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/story-of-a-blizzard.jpg" alt="Story Of A Blizzard" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Story Of A Blizzard</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="atmosphere figure" style="--d: 7">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img
+                src="/artwork/we-will-always-have-torrevieja.jpg"
+                alt="We will Always Have Torrevieja"
+                loading="lazy"
+              />
+              <span class="piece-meta">
+                <span class="piece-title">We will Always Have Torrevieja</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="atmosphere" style="--d: 8">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/night-watch.jpg" alt="Night Watch" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Night Watch</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="figure" style="--d: 9">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/the-antagonist.jpg" alt="The Antagonist" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">The Antagonist</span>
+                <span class="piece-tag">Digital</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece piece-wide" data-category="tribute" style="--d: 10">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/hilma-tribute.jpg" alt="Hilma Tribute" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Hilma Tribute</span>
+                <span class="piece-tag">Digital · Tribute</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="tribute" style="--d: 11">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/niki-tribute.jpg" alt="Niki Tribute" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Niki Tribute</span>
+                <span class="piece-tag">Digital · Tribute</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="tribute" style="--d: 12">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/tamara-tribute.jpg" alt="Tamara Tribute" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Tamara Tribute</span>
+                <span class="piece-tag">Digital · Tribute</span>
+              </span>
+            </button>
+          </article>
+
+          <article class="piece" data-category="tribute" style="--d: 13">
+            <button type="button" class="piece-trigger" data-lightbox>
+              <img src="/artwork/yayoi-tribute.jpg" alt="Yayoi Tribute" loading="lazy" />
+              <span class="piece-meta">
+                <span class="piece-title">Yayoi Tribute</span>
+                <span class="piece-tag">Digital · Tribute</span>
+              </span>
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section services" id="services">
+        <div class="section-head">
+          <h2>Open to collaborations</h2>
+          <p>
+            From event portraits to murals and editorial images — Raluca works across
+            paint, digital illustration, and animated 2D.
+          </p>
+        </div>
+
+        <ul class="service-list">
+          <li>
+            <h3>Commissions</h3>
+            <p>Custom drawings, paintings, and event portraits made for people and celebrations.</p>
+          </li>
+          <li>
+            <h3>Spaces &amp; shops</h3>
+            <p>Mural painting, shop windows, and screen illustrations for retail atmospheres.</p>
+          </li>
+          <li>
+            <h3>Editorial &amp; brand</h3>
+            <p>Book and magazine illustration, logos, posters, brochures, and web imagery.</p>
+          </li>
+          <li>
+            <h3>Motion</h3>
+            <p>2D animated images for campaigns, events, and digital storytelling.</p>
+          </li>
+        </ul>
+
+        <div class="collab-banner">
+          <p class="collab-kicker">Available for new projects</p>
+          <p class="collab-copy">
+            Based in Neuchâtel, Switzerland — working with clients locally and online.
+          </p>
+          <a class="btn btn-primary" href="#contact">Propose a collaboration</a>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="about-grid">
+          <div class="about-visual">
+            <img
+              src="/artwork/snow-poem.jpg"
+              alt="Snow Poem — fantasy inspired portrait by Raluca Voinea"
+              loading="lazy"
+            />
+          </div>
+          <div class="about-copy">
+            <h2>About Raluca</h2>
+            <p>
+              Painter and illustrator based in Neuchâtel, Switzerland. Her portfolio
+              spans dreamlike atmospheres, figurative studies, and tributes to artists
+              such as Hilma af Klint, Niki de Saint Phalle, Tamara de Lempicka, and
+              Yayoi Kusama.
+            </p>
+            <p>
+              Follow the studio on Instagram and browse prints and products via her
+              storefront links.
+            </p>
+            <div class="about-links">
+              <a href="https://www.instagram.com/ralu.voinea/" target="_blank" rel="noopener noreferrer"
+                >Instagram @ralu.voinea</a
+              >
+              <a
+                href="https://www.instagram.com/ralu.voinea.illustration/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >@ralu.voinea.illustration</a
+              >
+              <a href="https://ralucavoinea.artweb.com/" target="_blank" rel="noopener noreferrer"
+                >Artweb portfolio</a
+              >
+              <a href="https://society6.com/ralucavoinea" target="_blank" rel="noopener noreferrer"
+                >Society6 store</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="contact-panel">
+          <div class="contact-intro">
+            <h2>Let’s make something together</h2>
+            <p>
+              Share a brief for a commission, mural, editorial piece, or brand
+              collaboration. Prefer email or Instagram DMs — both are welcome.
+            </p>
+            <ul class="contact-channels">
+              <li>
+                <span>Instagram</span>
+                <a href="https://www.instagram.com/ralu.voinea/" target="_blank" rel="noopener noreferrer"
+                  >@ralu.voinea</a
+                >
+              </li>
+              <li>
+                <span>Studio</span>
+                <a href="https://ralucavoinea.artweb.com/contact" target="_blank" rel="noopener noreferrer"
+                  >Contact form on Artweb</a
+                >
+              </li>
+              <li>
+                <span>Location</span>
+                <span>Neuchâtel, Switzerland · by appointment</span>
+              </li>
+            </ul>
+          </div>
+
+          <form class="contact-form" data-contact-form novalidate>
+            <label>
+              Name
+              <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required placeholder="you@studio.com" />
+            </label>
+            <label>
+              Project type
+              <select name="project" required>
+                <option value="">Select one</option>
+                <option>Commission / portrait</option>
+                <option>Mural or shop window</option>
+                <option>Editorial / book / magazine</option>
+                <option>Brand / logo / web</option>
+                <option>Animation</option>
+                <option>Other collaboration</option>
+              </select>
+            </label>
+            <label>
+              Message
+              <textarea
+                name="message"
+                rows="5"
+                required
+                placeholder="Tell Raluca about the project, timeline, and where you saw her work."
+              ></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Send collaboration note</button>
+            <p class="form-note" data-form-note hidden></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <p class="footer-name">Raluca Voinea Illustration</p>
+        <p>Painter &amp; illustrator · Neuchâtel</p>
+      </div>
+      <p class="footer-credit">
+        Artwork © Raluca Voinea · sourced from
+        <a href="https://ralucavoinea.artweb.com/" target="_blank" rel="noopener noreferrer"
+          >ralucavoinea.artweb.com</a
+        >
+      </p>
+    </footer>
+
+    <dialog class="lightbox" data-lightbox-dialog>
+      <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">Close</button>
+      <img src="" alt="" data-lightbox-image />
+      <p class="lightbox-caption" data-lightbox-caption></p>
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
