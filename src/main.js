@@ -1,6 +1,5 @@
 const header = document.querySelector("[data-header]");
-const menuToggle = document.querySelector("[data-menu-toggle]");
-const mobileNav = document.querySelector("[data-mobile-nav]");
+const dockLinks = document.querySelectorAll("[data-dock-link]");
 const filters = document.querySelectorAll("[data-filter]");
 const pieces = document.querySelectorAll(".piece");
 const lightboxDialog = document.querySelector("[data-lightbox-dialog]");
@@ -10,27 +9,35 @@ const lightboxClose = document.querySelector("[data-lightbox-close]");
 const form = document.querySelector("[data-contact-form]");
 const formNote = document.querySelector("[data-form-note]");
 
+const sections = [
+  { id: "top", el: document.querySelector("#top") },
+  { id: "work", el: document.querySelector("#work") },
+  { id: "services", el: document.querySelector("#services") },
+  { id: "about", el: document.querySelector("#about") },
+  { id: "contact", el: document.querySelector("#contact") },
+].filter((item) => item.el);
+
 function onScroll() {
-  header?.classList.toggle("is-scrolled", window.scrollY > 24);
+  header?.classList.toggle("is-scrolled", window.scrollY > 16);
+  updateActiveDock();
 }
 
-function closeMobileNav() {
-  if (!mobileNav || !menuToggle) return;
-  mobileNav.hidden = true;
-  menuToggle.classList.remove("is-open");
-  menuToggle.setAttribute("aria-label", "Open menu");
+function updateActiveDock() {
+  if (!dockLinks.length) return;
+
+  const marker = window.scrollY + window.innerHeight * 0.35;
+  let activeId = "top";
+
+  for (const section of sections) {
+    const top = section.el.offsetTop;
+    if (marker >= top) activeId = section.id;
+  }
+
+  dockLinks.forEach((link) => {
+    const href = link.getAttribute("href")?.replace("#", "");
+    link.classList.toggle("is-active", href === activeId);
+  });
 }
-
-menuToggle?.addEventListener("click", () => {
-  const open = mobileNav.hidden;
-  mobileNav.hidden = !open;
-  menuToggle.classList.toggle("is-open", open);
-  menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-});
-
-mobileNav?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", closeMobileNav);
-});
 
 filters.forEach((button) => {
   button.addEventListener("click", () => {
@@ -58,7 +65,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+  { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
 );
 
 pieces.forEach((piece) => observer.observe(piece));
