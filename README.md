@@ -27,6 +27,17 @@ npm run build
 npm run preview
 ```
 
+## Deploy with GitHub Pages
+
+Images break if the site is published without a build, or if asset URLs ignore the repo subpath (`/Raluca-Voinea-Illustrations/`). This project is set up for Actions-based Pages.
+
+1. Merge this branch into `main`.
+2. On GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+3. Push to `main` (or run the **Deploy to GitHub Pages** workflow manually under the **Actions** tab).
+4. Open: `https://michaelady.github.io/Raluca-Voinea-Illustrations/`
+
+Do **not** publish the repo root as a plain branch site — Vite needs `npm run build`, and the workflow uploads the `dist` folder.
+
 ## Site sections
 
 1. **Hero** — brand-first introduction with collaboration CTA  
