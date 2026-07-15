@@ -27,16 +27,34 @@ npm run build
 npm run preview
 ```
 
-## Deploy with GitHub Pages
+## Static images
 
-Images break if the site is published without a build, or if asset URLs ignore the repo subpath (`/Raluca-Voinea-Illustrations/`). This project is set up for Actions-based Pages.
+All portfolio pictures are downloaded from Raluca’s Artweb gallery and stored in the repo:
+
+- Source copies: `public/artwork/*.jpg`
+- Published static site: `docs/` (HTML, CSS, JS, and the same local images)
+
+Nothing loads artwork from external CDNs at runtime.
+
+## Deploy with GitHub Pages (static `/docs`)
+
+Easiest path from the GitHub website UI:
 
 1. Merge this branch into `main`.
-2. On GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Push to `main` (or run the **Deploy to GitHub Pages** workflow manually under the **Actions** tab).
-4. Open: `https://michaelady.github.io/Raluca-Voinea-Illustrations/`
+2. **Settings → Pages → Build and deployment**
+3. **Source:** Deploy from a branch
+4. **Branch:** `main` → folder **`/docs`** → Save
+5. Open: `https://michaelady.github.io/Raluca-Voinea-Illustrations/`
 
-Do **not** publish the repo root as a plain branch site — Vite needs `npm run build`, and the workflow uploads the `dist` folder.
+Rebuild the static folder after design changes:
+
+```bash
+npm run build:docs
+```
+
+### Optional: GitHub Actions
+
+There is also a workflow that builds `dist` and deploys via Actions. Prefer `/docs` if you want a fully static publish from the branch.
 
 ## Site sections
 

@@ -1,9 +1,9 @@
 import { defineConfig } from "vite";
 
-// Project Pages URL: https://michaelady.github.io/Raluca-Voinea-Illustrations/
-// Root-absolute paths like /artwork/... break there — base + relative public assets fix it.
+// Relative base so built files work on GitHub Pages project sites
+// (e.g. /Raluca-Voinea-Illustrations/) without hardcoding the repo name.
 export default defineConfig({
-  base: "/Raluca-Voinea-Illustrations/",
+  base: "./",
   root: ".",
   publicDir: "public",
   build: {

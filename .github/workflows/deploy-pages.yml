@@ -27,15 +27,15 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install and build
+      - name: Build static site with local artwork
         run: |
           npm ci
-          npm run build
+          npm run build:docs
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: docs
 
   deploy:
     needs: build
