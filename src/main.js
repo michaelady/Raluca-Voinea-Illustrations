@@ -1,6 +1,5 @@
 const header = document.querySelector("[data-header]");
 const dockLinks = document.querySelectorAll("[data-dock-link]");
-const filters = document.querySelectorAll("[data-filter]");
 const pieces = document.querySelectorAll(".piece");
 const lightboxDialog = document.querySelector("[data-lightbox-dialog]");
 const lightboxImage = document.querySelector("[data-lightbox-image]");
@@ -18,12 +17,14 @@ const sections = [
 ].filter((item) => item.el);
 
 function onScroll() {
-  header?.classList.toggle("is-scrolled", window.scrollY > 16);
+  if (!document.body.classList.contains("page-gallery")) {
+    header?.classList.toggle("is-scrolled", window.scrollY > 16);
+  }
   updateActiveDock();
 }
 
 function updateActiveDock() {
-  if (!dockLinks.length) return;
+  if (!dockLinks.length || !sections.length) return;
 
   const marker = window.scrollY + window.innerHeight * 0.35;
   let activeId = "top";
@@ -34,27 +35,11 @@ function updateActiveDock() {
   }
 
   dockLinks.forEach((link) => {
-    const href = link.getAttribute("href")?.replace("#", "");
-    link.classList.toggle("is-active", href === activeId);
+    const href = link.getAttribute("href") ?? "";
+    if (!href.startsWith("#")) return;
+    link.classList.toggle("is-active", href.replace("#", "") === activeId);
   });
 }
-
-filters.forEach((button) => {
-  button.addEventListener("click", () => {
-    const value = button.dataset.filter;
-    filters.forEach((item) => {
-      const active = item === button;
-      item.classList.toggle("is-active", active);
-      item.setAttribute("aria-selected", String(active));
-    });
-
-    pieces.forEach((piece) => {
-      const categories = piece.dataset.category?.split(/\s+/) ?? [];
-      const show = value === "all" || categories.includes(value);
-      piece.classList.toggle("is-hidden", !show);
-    });
-  });
-});
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -97,9 +82,11 @@ form?.addEventListener("submit", (event) => {
   const project = String(data.get("project") || "").trim();
   const message = String(data.get("message") || "").trim();
 
-  if (!name || !email || !project || !message) {
-    formNote.hidden = false;
-    formNote.textContent = "Please complete every field so Raluca can reply with context.";
+  if (!name || !email || !project || !message || !formNote) {
+    if (formNote) {
+      formNote.hidden = false;
+      formNote.textContent = "Please complete every field so Raluca can reply with context.";
+    }
     return;
   }
 

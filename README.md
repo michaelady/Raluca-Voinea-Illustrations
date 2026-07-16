@@ -58,10 +58,7 @@ npm run build:docs
 
 There is also a workflow that builds `dist` and deploys via Actions. Prefer `/docs` if you want a fully static publish from the branch.
 
-## Site sections
+## Site pages
 
-1. **Hero** — brand-first introduction with collaboration CTA  
-2. **Selected works** — filterable gallery of her digital pieces  
-3. **Collaborate** — services and availability for new projects  
-4. **About** — short bio and links  
-5. **Contact** — collaboration form with Instagram / Artweb pathways  
+1. **Home (`index.html`)** — hero, curated selection (~half the works), collaborate, about, contact  
+2. **Gallery (`gallery.html`)** — more works grouped by subject (Portraits, Nature, Atmosphere, Tributes, Books)  
