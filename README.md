@@ -7,7 +7,9 @@ Modern portfolio and presentation site for **Raluca Voinea Illustration** — pa
 All artwork and artist facts used on this site come from Raluca’s own public pages:
 
 - Portfolio & pieces: [ralucavoinea.artweb.com](https://ralucavoinea.artweb.com/)
-- About / Instagram: [About Me](https://ralucavoinea.artweb.com/about-me) · [@ralu.voinea](https://www.instagram.com/ralu.voinea/)
+- About / Instagram: [About Me](https://ralucavoinea.artweb.com/about-me) · [@ralu.voinea.illustration](https://www.instagram.com/ralu.voinea.illustration/)
+- Instagram artworks downloaded into `public/artwork/instagram/`
+- Contact email from Instagram bio: `raluca_voinea@outlook.com`
 - Services listed for the studio: [search.ch listing](https://search.ch/tel/neuchatel/rue-des-berthoudes-24/raluca-voinea-illustration)
 - Store link: [Society6](https://society6.com/ralucavoinea)
 

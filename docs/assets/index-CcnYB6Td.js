@@ -5,4 +5,4 @@ Project type: ${e}
 Email: ${c}
 
 ${n}
-`);l.hidden=!1,l.innerHTML=`Thanks, ${r}. Open Instagram to message <a href="https://www.instagram.com/ralu.voinea/" target="_blank" rel="noopener noreferrer">@ralu.voinea</a>, or use the <a href="https://ralucavoinea.artweb.com/contact" target="_blank" rel="noopener noreferrer">Artweb contact form</a>. <a href="mailto:?subject=${i}&body=${S}">Draft an email</a> with your note if you prefer.`,a.reset()});window.addEventListener("scroll",y,{passive:!0});y();
+`);l.hidden=!1,l.innerHTML=`Thanks, ${r}. Message <a href="https://www.instagram.com/ralu.voinea.illustration/" target="_blank" rel="noopener noreferrer">@ralu.voinea.illustration</a>, email <a href="mailto:raluca_voinea@outlook.com?subject=${i}&body=${S}">raluca_voinea@outlook.com</a>, or use the <a href="https://ralucavoinea.artweb.com/contact" target="_blank" rel="noopener noreferrer">Artweb contact form</a>.`,a.reset()});window.addEventListener("scroll",y,{passive:!0});y();
