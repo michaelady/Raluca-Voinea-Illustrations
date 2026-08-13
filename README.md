@@ -59,6 +59,7 @@ The homepage form sends each inquiry through [FormSubmit](https://formsubmit.co)
 
 - `raluca_voinea@outlook.com`
 - `ralucapopescudumitrescu@gmail.com`
+- `info@ralucavoinea.ch`
 
 The visitor’s address is set as Reply-To. The first submission to each inbox asks FormSubmit to confirm the address — open that email and click the activation link so later messages are delivered.
 
