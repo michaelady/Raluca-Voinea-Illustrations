@@ -33,30 +33,25 @@ npm run preview
 
 All portfolio pictures are downloaded from Raluca’s Artweb gallery and stored in the repo:
 
-- Source copies: `public/artwork/*.jpg`
+- Source copies: `public/artwork/*.jpg` (Vite copies these to `/artwork/` in `npm run dev` and `docs/`)
+- Repo-root copies: `artwork/*.jpg` (same files, for GitHub Pages when it publishes the repository root)
 - Published static site: `docs/` (HTML, CSS, JS, and the same local images)
 
-Nothing loads artwork from external CDNs at runtime.
+The HTML references `./artwork/...`. That path works in Vite, in `/docs`, and at the repo root. Nothing loads artwork from external CDNs at runtime.
 
-## Deploy with GitHub Pages (static `/docs`)
+## Deploy with GitHub Pages
 
-Easiest path from the GitHub website UI:
+The live site at [ralucavoinea.ch](https://ralucavoinea.ch) must be able to fetch `/artwork/coming-back.jpg`. Prefer one of these setups:
 
-1. Merge this branch into `main`.
-2. **Settings → Pages → Build and deployment**
-3. **Source:** Deploy from a branch
-4. **Branch:** `main` → folder **`/docs`** → Save
-5. Open: `https://michaelady.github.io/Raluca-Voinea-Illustrations/`
+1. **Deploy from a branch → folder `/docs`** (built site, recommended)
+2. **Deploy from a branch → folder `/` (root)** — works because `artwork/` is also stored at the repo root
+3. **GitHub Actions** — workflow `.github/workflows/deploy-pages.yml` builds and publishes `docs/`
 
 Rebuild the static folder after design changes:
 
 ```bash
 npm run build:docs
 ```
-
-### Optional: GitHub Actions
-
-There is also a workflow that builds `dist` and deploys via Actions. Prefer `/docs` if you want a fully static publish from the branch.
 
 ## Site pages
 
