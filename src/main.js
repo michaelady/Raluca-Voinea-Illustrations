@@ -77,6 +77,7 @@ lightboxDialog?.addEventListener("click", (event) => {
 const CONTACT_INBOXES = [
   "raluca_voinea@outlook.com",
   "ralucapopescudumitrescu@gmail.com",
+  "info@ralucavoinea.ch",
 ];
 const SUBMIT_LABEL = "Send collaboration note";
 
