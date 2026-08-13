@@ -1,0 +1,15 @@
+{
+  "name": "raluca-voinea-illustration",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:docs": "vite build && node scripts/sync-docs.mjs"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
