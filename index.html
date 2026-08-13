@@ -301,7 +301,24 @@
             </ul>
           </div>
 
-          <form class="contact-form" data-contact-form novalidate>
+          <form
+            class="contact-form"
+            data-contact-form
+            action="https://formsubmit.co/raluca_voinea@outlook.com"
+            method="POST"
+            novalidate
+          >
+            <input type="hidden" name="_cc" value="ralucapopescudumitrescu@gmail.com" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_subject" value="Collaboration inquiry from ralucavoinea.ch" />
+            <input type="hidden" name="_next" value="https://www.ralucavoinea.ch/#contact" />
+            <div class="contact-honeypot" aria-hidden="true">
+              <label>
+                Website
+                <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
             <label>
               Name
               <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
@@ -331,8 +348,8 @@
                 placeholder="Tell Raluca about the project, timeline, and where you saw her work."
               ></textarea>
             </label>
-            <button class="btn btn-primary" type="submit">Send collaboration note</button>
-            <p class="form-note" data-form-note hidden></p>
+            <button class="btn btn-primary" type="submit" data-submit-button>Send collaboration note</button>
+            <p class="form-note" data-form-note hidden role="status" aria-live="polite"></p>
           </form>
         </div>
       </section>

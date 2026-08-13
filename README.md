@@ -53,6 +53,15 @@ Rebuild the static folder after design changes:
 npm run build:docs
 ```
 
+## Contact form
+
+The homepage form sends each inquiry through [FormSubmit](https://formsubmit.co) to:
+
+- `raluca_voinea@outlook.com`
+- `ralucapopescudumitrescu@gmail.com`
+
+The visitor’s address is set as Reply-To. The first submission to each inbox asks FormSubmit to confirm the address — open that email and click the activation link so later messages are delivered.
+
 ## Site pages
 
 1. **Home (`index.html`)** — hero, curated selection (~half the works), collaborate, about, contact  
