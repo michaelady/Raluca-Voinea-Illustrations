@@ -57,9 +57,9 @@ npm run build:docs
 
 The homepage form sends each inquiry through [FormSubmit](https://formsubmit.co) to:
 
+- `info@ralucavoinea.ch` via FormSubmit form ID `b989e55e267146abc54d97b5e2276618` (this ID replaces the address in the public HTML so scrapers cannot harvest it)
 - `raluca_voinea@outlook.com`
 - `ralucapopescudumitrescu@gmail.com`
-- `info@ralucavoinea.ch`
 
 The visitor’s address is set as Reply-To. The first submission to each inbox asks FormSubmit to confirm the address — open that email and click the activation link so later messages are delivered.
 

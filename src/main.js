@@ -74,11 +74,12 @@ lightboxDialog?.addEventListener("click", (event) => {
   if (event.target === lightboxDialog) lightboxDialog.close();
 });
 
+const FORMSUBMIT_FORM_ID = "b989e55e267146abc54d97b5e2276618";
 const CONTACT_INBOXES = [
   "raluca_voinea@outlook.com",
   "ralucapopescudumitrescu@gmail.com",
-  "info@ralucavoinea.ch",
 ];
+const FORMSUBMIT_ENDPOINTS = [FORMSUBMIT_FORM_ID, ...CONTACT_INBOXES];
 const SUBMIT_LABEL = "Send collaboration note";
 
 function showFormNote(kind, html) {
@@ -175,7 +176,7 @@ form?.addEventListener("submit", async (event) => {
   showFormNote("success", "Sending your note…");
 
   try {
-    const results = await Promise.allSettled(CONTACT_INBOXES.map((inbox) => sendToInbox(inbox, payload)));
+    const results = await Promise.allSettled(FORMSUBMIT_ENDPOINTS.map((inbox) => sendToInbox(inbox, payload)));
     const sent = results.filter((result) => result.status === "fulfilled");
     const failed = results.filter((result) => result.status === "rejected");
 
@@ -192,7 +193,7 @@ form?.addEventListener("submit", async (event) => {
     if (activationNeeded) {
       showFormNote(
         "error",
-        `The inbox still needs a one-time confirmation from FormSubmit. Please check ${CONTACT_INBOXES.join(" and ")} for an activation email, click the link, then send this form again. ` +
+        `The inbox still needs a one-time confirmation from FormSubmit. Please check raluca_voinea@outlook.com, ralucapopescudumitrescu@gmail.com, and info@ralucavoinea.ch for an activation email, click the link, then send this form again. ` +
           mailtoFallback(name, email, project, message)
       );
       return;
