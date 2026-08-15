@@ -15,6 +15,19 @@ All artwork and artist facts used on this site come from Raluca’s own public p
 
 Artwork files in `public/artwork/` are downloaded from her Artweb CDN and remain © Raluca Voinea.
 
+## Search indexing
+
+The published site allows Google and Bing to crawl it:
+
+- `robots.txt` allows crawlers and points to the sitemap
+- `sitemap.xml` lists the home and gallery pages
+- Each page has `index, follow` robots tags, a canonical URL, Open Graph tags, and JSON-LD
+
+After deploy, request indexing:
+
+1. [Google Search Console](https://search.google.com/search-console) — add `https://www.ralucavoinea.ch/`, verify the domain, then submit `https://www.ralucavoinea.ch/sitemap.xml`
+2. [Bing Webmaster Tools](https://www.bing.com/webmasters) — add the same site (or import from Search Console) and submit the sitemap
+
 ## Develop
 
 ```bash
