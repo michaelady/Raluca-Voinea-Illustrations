@@ -19,14 +19,15 @@ Artwork files in `public/artwork/` are downloaded from her Artweb CDN and remain
 
 The published site allows Google and Bing to crawl it:
 
-- `robots.txt` allows crawlers and points to the sitemap
+- `robots.txt` allows Googlebot, Bingbot, and related crawlers, and points to the sitemap
 - `sitemap.xml` lists the home and gallery pages
 - Each page has `index, follow` robots tags, a canonical URL, Open Graph tags, and JSON-LD
+- After each GitHub Pages deploy, [IndexNow](https://www.indexnow.org/) notifies Bing that the URLs changed
 
-After deploy, request indexing:
+After deploy, request indexing (this still has to be done in each dashboard):
 
-1. [Google Search Console](https://search.google.com/search-console) — add `https://www.ralucavoinea.ch/`, verify the domain, then submit `https://www.ralucavoinea.ch/sitemap.xml`
-2. [Bing Webmaster Tools](https://www.bing.com/webmasters) — add the same site (or import from Search Console) and submit the sitemap
+1. [Google Search Console](https://search.google.com/search-console) — inspect `https://www.ralucavoinea.ch/` (lowercase `www`) and click **Request indexing**. Submit `https://www.ralucavoinea.ch/sitemap.xml` under **Sitemaps**.
+2. [Bing Webmaster Tools](https://www.bing.com/webmasters) — URL Inspection → **Request indexing**. Bing’s “Discovered but not crawled” status is normal for a new site until that request succeeds and Bing fetches the page.
 
 ## Develop
 
