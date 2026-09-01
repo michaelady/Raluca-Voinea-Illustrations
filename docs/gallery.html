@@ -13,8 +13,14 @@
     <meta name="googlebot" content="index, follow, max-image-preview:large" />
     <meta name="bingbot" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://www.ralucavoinea.ch/gallery.html" />
+    <link rel="alternate" hreflang="en" href="https://www.ralucavoinea.ch/gallery.html?lang=en" />
+    <link rel="alternate" hreflang="fr" href="https://www.ralucavoinea.ch/gallery.html?lang=fr" />
+    <link rel="alternate" hreflang="de" href="https://www.ralucavoinea.ch/gallery.html?lang=de" />
+    <link rel="alternate" hreflang="x-default" href="https://www.ralucavoinea.ch/gallery.html" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale:alternate" content="fr_CH" />
+    <meta property="og:locale:alternate" content="de_CH" />
     <meta property="og:site_name" content="Raluca Voinea Illustration" />
     <meta property="og:title" content="Gallery by Subject — Raluca Voinea Illustration" />
     <meta
@@ -31,6 +37,16 @@
       content="Browse Raluca Voinea Illustration by subject — portraits, nature, atmosphere, tributes, and book covers."
     />
     <meta name="twitter:image" content="https://www.ralucavoinea.ch/artwork/coming-back.jpg" />
+    <script>
+      (function () {
+        try {
+          var fromUrl = new URLSearchParams(location.search).get("lang");
+          var stored = localStorage.getItem("site-lang");
+          var lang = fromUrl || stored;
+          if (lang === "fr" || lang === "de" || lang === "en") document.documentElement.lang = lang;
+        } catch (e) {}
+      })();
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -50,56 +66,63 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/main-DTYQtfiT.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/main-CludkS02.css">
+    <script type="module" crossorigin src="./assets/main-CqBcay7o.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-CmJ7fgqh.css">
   </head>
   <body class="page-gallery">
     <div class="atmosphere" aria-hidden="true"></div>
 
     <header class="site-header is-scrolled" data-header>
       <a class="logo" href="./index.html#top">Raluca Voinea</a>
-      <nav class="nav" aria-label="Primary">
-        <a href="./index.html#work">Work</a>
-        <a class="is-current" href="./gallery.html" aria-current="page">Gallery</a>
-        <a href="./index.html#services">Collaborate</a>
-        <a href="./index.html#about">About</a>
-        <a class="nav-cta" href="./index.html#contact">Start a project</a>
+      <nav class="nav" data-i18n-aria="navPrimary" aria-label="Primary">
+        <a href="./index.html#work" data-i18n="navWork">Work</a>
+        <a class="is-current" href="./gallery.html" aria-current="page" data-i18n="navGallery">Gallery</a>
+        <a href="./index.html#services" data-i18n="navCollaborate">Collaborate</a>
+        <a href="./index.html#about" data-i18n="navAbout">About</a>
+        <a class="nav-cta" href="./index.html#contact" data-i18n="navStart">Start a project</a>
       </nav>
-      <a class="header-cta" href="./index.html">Home</a>
+      <div class="header-actions">
+        <nav class="lang-switch" data-lang-switch data-i18n-aria="navLanguage" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+          <button type="button" data-lang="de" aria-pressed="false">DE</button>
+        </nav>
+        <a class="header-cta" href="./index.html" data-i18n="navHome">Home</a>
+      </div>
     </header>
 
-    <nav class="mobile-dock" aria-label="Mobile">
-      <a href="./index.html#top">Home</a>
-      <a href="./index.html#work">Work</a>
-      <a class="is-active" href="./gallery.html" aria-current="page">Gallery</a>
-      <a href="./index.html#contact">Contact</a>
-      <a href="#portraits">Subjects</a>
+    <nav class="mobile-dock" data-i18n-aria="navMobile" aria-label="Mobile">
+      <a href="./index.html#top" data-i18n="navHome">Home</a>
+      <a href="./index.html#work" data-i18n="navWork">Work</a>
+      <a class="is-active" href="./gallery.html" aria-current="page" data-i18n="navGallery">Gallery</a>
+      <a href="./index.html#contact" data-i18n="navContact">Contact</a>
+      <a href="#portraits" data-i18n="navSubjects">Subjects</a>
     </nav>
 
     <main id="top" class="gallery-main">
       <section class="section gallery-intro">
         <div class="section-head">
-          <p class="eyebrow">Full archive</p>
-          <h1>Gallery by subject</h1>
-          <p>
+          <p class="eyebrow" data-i18n="galleryEyebrow">Full archive</p>
+          <h1 data-i18n="galleryTitle">Gallery by subject</h1>
+          <p data-i18n-html="galleryIntro">
             Explore more works grouped by theme. Jump back anytime to the
             <a href="./index.html">main page</a>.
           </p>
         </div>
 
-        <nav class="subject-nav" aria-label="Subjects">
-          <a href="#portraits">Portraits</a>
-          <a href="#nature">Nature</a>
-          <a href="#atmosphere">Atmosphere</a>
-          <a href="#tributes">Tributes</a>
-          <a href="#books">Books &amp; covers</a>
+        <nav class="subject-nav" data-i18n-aria="subjectsNav" aria-label="Subjects">
+          <a href="#portraits" data-i18n="subjectPortraits">Portraits</a>
+          <a href="#nature" data-i18n="subjectNature">Nature</a>
+          <a href="#atmosphere" data-i18n="subjectAtmosphere">Atmosphere</a>
+          <a href="#tributes" data-i18n="subjectTributes">Tributes</a>
+          <a href="#books" data-i18n="subjectBooks">Books &amp; covers</a>
         </nav>
       </section>
 
       <section class="section subject-block" id="portraits">
         <div class="section-head">
-          <h2>Portraits &amp; figures</h2>
-          <p>People, relationships, and character studies.</p>
+          <h2 data-i18n="portraitsTitle">Portraits &amp; figures</h2>
+          <p data-i18n="portraitsLead">People, relationships, and character studies.</p>
         </div>
         <div class="gallery">
           <article class="piece" style="--d: 0">
@@ -107,7 +130,7 @@
               <img src="./assets/08-sweet-child-CHO4MBE3.jpg" alt="Sweet Child" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Sweet Child</span>
-                <span class="piece-tag">Portrait</span>
+                <span class="piece-tag" data-i18n="tagPortrait">Portrait</span>
               </span>
             </button>
           </article>
@@ -116,7 +139,7 @@
               <img src="./assets/10-my-muse-z2GOREc8.jpg" alt="My Muse" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">My Muse</span>
-                <span class="piece-tag">Portrait</span>
+                <span class="piece-tag" data-i18n="tagPortrait">Portrait</span>
               </span>
             </button>
           </article>
@@ -125,7 +148,7 @@
               <img src="./assets/silence-DaAPaRaQ.jpg" alt="Silence" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Silence</span>
-                <span class="piece-tag">Portrait</span>
+                <span class="piece-tag" data-i18n="tagPortrait">Portrait</span>
               </span>
             </button>
           </article>
@@ -134,7 +157,7 @@
               <img src="./assets/snow-poem-_ckADgWA.jpg" alt="Snow Poem" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Snow Poem</span>
-                <span class="piece-tag">Fantasy portrait</span>
+                <span class="piece-tag" data-i18n="tagFantasyPortrait">Fantasy portrait</span>
               </span>
             </button>
           </article>
@@ -143,7 +166,7 @@
               <img src="./assets/break-dancer-Cg9UrmI8.jpg" alt="Break Dancer" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Break Dancer</span>
-                <span class="piece-tag">Figure</span>
+                <span class="piece-tag" data-i18n="tagFigure">Figure</span>
               </span>
             </button>
           </article>
@@ -152,8 +175,8 @@
 
       <section class="section subject-block" id="nature">
         <div class="section-head">
-          <h2>Nature &amp; animals</h2>
-          <p>Floral studies, wildlife, and quiet living forms.</p>
+          <h2 data-i18n="natureTitle">Nature &amp; animals</h2>
+          <p data-i18n="natureLead">Floral studies, wildlife, and quiet living forms.</p>
         </div>
         <div class="gallery">
           <article class="piece" style="--d: 0">
@@ -165,7 +188,7 @@
               />
               <span class="piece-meta">
                 <span class="piece-title">Magnolia</span>
-                <span class="piece-tag">Floral</span>
+                <span class="piece-tag" data-i18n="tagFloral">Floral</span>
               </span>
             </button>
           </article>
@@ -178,7 +201,7 @@
               />
               <span class="piece-meta">
                 <span class="piece-title">Capybara Family</span>
-                <span class="piece-tag">Animals</span>
+                <span class="piece-tag" data-i18n="tagAnimals">Animals</span>
               </span>
             </button>
           </article>
@@ -187,7 +210,7 @@
               <img src="./assets/the-antagonist-C5h4_ceY.jpg" alt="The Antagonist" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">The Antagonist</span>
-                <span class="piece-tag">Moths</span>
+                <span class="piece-tag" data-i18n="tagMoths">Moths</span>
               </span>
             </button>
           </article>
@@ -196,7 +219,7 @@
               <img src="./assets/la-nuit-Cx_sjsIU.jpg" alt="La Nuit" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">La Nuit</span>
-                <span class="piece-tag">Swan</span>
+                <span class="piece-tag" data-i18n="tagSwan">Swan</span>
               </span>
             </button>
           </article>
@@ -205,8 +228,8 @@
 
       <section class="section subject-block" id="atmosphere">
         <div class="section-head">
-          <h2>Night &amp; atmosphere</h2>
-          <p>Dreamlike landscapes, weather, and quiet scenes.</p>
+          <h2 data-i18n="atmosphereTitle">Night &amp; atmosphere</h2>
+          <p data-i18n="atmosphereLead">Dreamlike landscapes, weather, and quiet scenes.</p>
         </div>
         <div class="gallery">
           <article class="piece" style="--d: 0">
@@ -214,7 +237,7 @@
               <img src="./assets/coming-back-BgBcR6fY.jpg" alt="Coming Back" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Coming Back</span>
-                <span class="piece-tag">Night valley</span>
+                <span class="piece-tag" data-i18n="tagNightValley">Night valley</span>
               </span>
             </button>
           </article>
@@ -223,7 +246,7 @@
               <img src="./assets/her-mind-DyDBSHIU.jpg" alt="Her Mind" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Her Mind</span>
-                <span class="piece-tag">Atmosphere</span>
+                <span class="piece-tag" data-i18n="tagAtmosphere">Atmosphere</span>
               </span>
             </button>
           </article>
@@ -232,7 +255,7 @@
               <img src="./assets/story-of-a-blizzard-CvBkA4ay.jpg" alt="Story Of A Blizzard" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Story Of A Blizzard</span>
-                <span class="piece-tag">Weather</span>
+                <span class="piece-tag" data-i18n="tagWeather">Weather</span>
               </span>
             </button>
           </article>
@@ -245,7 +268,7 @@
               />
               <span class="piece-meta">
                 <span class="piece-title">We will Always Have Torrevieja</span>
-                <span class="piece-tag">Travel memory</span>
+                <span class="piece-tag" data-i18n="tagTravel">Travel memory</span>
               </span>
             </button>
           </article>
@@ -254,7 +277,7 @@
               <img src="./assets/night-watch-CCDa-yuq.jpg" alt="Night Watch" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Night Watch</span>
-                <span class="piece-tag">Night</span>
+                <span class="piece-tag" data-i18n="tagNight">Night</span>
               </span>
             </button>
           </article>
@@ -267,7 +290,7 @@
               />
               <span class="piece-meta">
                 <span class="piece-title">Torrevieja (Instagram)</span>
-                <span class="piece-tag">Atmosphere</span>
+                <span class="piece-tag" data-i18n="tagAtmosphere">Atmosphere</span>
               </span>
             </button>
           </article>
@@ -276,8 +299,8 @@
 
       <section class="section subject-block" id="tributes">
         <div class="section-head">
-          <h2>Artist tributes</h2>
-          <p>Homages to creators who shaped Raluca’s visual world.</p>
+          <h2 data-i18n="tributesTitle">Artist tributes</h2>
+          <p data-i18n="tributesLead">Homages to creators who shaped Raluca’s visual world.</p>
         </div>
         <div class="gallery">
           <article class="piece" style="--d: 0">
@@ -285,7 +308,7 @@
               <img src="./assets/01-faith-ringgold-B-3vZkOv.jpg" alt="Faith Ringgold" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Faith Ringgold</span>
-                <span class="piece-tag">Tribute</span>
+                <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
               </span>
             </button>
           </article>
@@ -294,7 +317,7 @@
               <img src="./assets/hilma-tribute-Cxvid7ci.jpg" alt="Hilma Tribute" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Hilma Tribute</span>
-                <span class="piece-tag">Tribute</span>
+                <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
               </span>
             </button>
           </article>
@@ -303,7 +326,7 @@
               <img src="./assets/niki-tribute-BVe5FqCI.jpg" alt="Niki Tribute" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Niki Tribute</span>
-                <span class="piece-tag">Tribute</span>
+                <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
               </span>
             </button>
           </article>
@@ -312,7 +335,7 @@
               <img src="./assets/tamara-tribute-lwQq3Lxh.jpg" alt="Tamara Tribute" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Tamara Tribute</span>
-                <span class="piece-tag">Tribute</span>
+                <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
               </span>
             </button>
           </article>
@@ -321,7 +344,7 @@
               <img src="./assets/yayoi-tribute-DsxfRii0.jpg" alt="Yayoi Tribute" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Yayoi Tribute</span>
-                <span class="piece-tag">Tribute</span>
+                <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
               </span>
             </button>
           </article>
@@ -330,8 +353,8 @@
 
       <section class="section subject-block" id="books">
         <div class="section-head">
-          <h2>Books &amp; covers</h2>
-          <p>Storybook and magazine-facing illustration.</p>
+          <h2 data-i18n="booksTitle">Books &amp; covers</h2>
+          <p data-i18n="booksLead">Storybook and magazine-facing illustration.</p>
         </div>
         <div class="gallery">
           <article class="piece" style="--d: 0">
@@ -343,7 +366,7 @@
               />
               <span class="piece-meta">
                 <span class="piece-title">Where are you going, sweet girl?</span>
-                <span class="piece-tag">Book cover study</span>
+                <span class="piece-tag" data-i18n="tagBookCover">Book cover study</span>
               </span>
             </button>
           </article>
@@ -352,7 +375,7 @@
               <img src="./assets/12-hey-C4v-OVYq.jpg" alt="Book Cover Study" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Book Cover Study</span>
-                <span class="piece-tag">Publishing</span>
+                <span class="piece-tag" data-i18n="tagPublishing">Publishing</span>
               </span>
             </button>
           </article>
@@ -365,7 +388,7 @@
               />
               <span class="piece-meta">
                 <span class="piece-title">Gaga Portrait</span>
-                <span class="piece-tag">Magazine cover</span>
+                <span class="piece-tag" data-i18n="tagMagazine">Magazine cover</span>
               </span>
             </button>
           </article>
@@ -374,8 +397,8 @@
 
       <section class="section">
         <div class="page-nav">
-          <a class="btn btn-ghost-dark" href="./index.html#work">Back to selected works</a>
-          <a class="btn btn-primary" href="./index.html#contact">Start a collaboration</a>
+          <a class="btn btn-ghost-dark" href="./index.html#work" data-i18n="backSelected">Back to selected works</a>
+          <a class="btn btn-primary" href="./index.html#contact" data-i18n="startCollab">Start a collaboration</a>
         </div>
       </section>
     </main>
@@ -383,10 +406,10 @@
     <footer class="site-footer">
       <div class="footer-brand">
         <p class="footer-name">Raluca Voinea Illustration</p>
-        <p>Gallery by subject</p>
+        <p data-i18n="galleryFooter">Gallery by subject</p>
       </div>
       <p class="footer-credit">
-        <a href="./index.html">Main page</a> ·
+        <a href="./index.html" data-i18n="mainPage">Main page</a> ·
         <a href="https://www.instagram.com/ralu.voinea.illustration/" target="_blank" rel="noopener noreferrer"
           >@ralu.voinea.illustration</a
         >
@@ -394,7 +417,7 @@
     </footer>
 
     <dialog class="lightbox" data-lightbox-dialog>
-      <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close">Close</button>
+      <button type="button" class="lightbox-close" data-lightbox-close data-i18n="lightboxClose" data-i18n-aria="lightboxClose" aria-label="Close">Close</button>
       <img src="" alt="" data-lightbox-image />
       <p class="lightbox-caption" data-lightbox-caption></p>
     </dialog>

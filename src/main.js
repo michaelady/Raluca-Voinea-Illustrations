@@ -1,3 +1,7 @@
+import { applyLanguage, getLanguage, initLanguageSwitcher, t } from "./i18n.js";
+
+initLanguageSwitcher();
+
 const header = document.querySelector("[data-header]");
 const dockLinks = document.querySelectorAll("[data-dock-link]");
 const pieces = document.querySelectorAll(".piece");
@@ -80,7 +84,6 @@ const CONTACT_INBOXES = [
   "ralucapopescudumitrescu@gmail.com",
 ];
 const FORMSUBMIT_ENDPOINTS = [FORMSUBMIT_FORM_ID, ...CONTACT_INBOXES];
-const SUBMIT_LABEL = "Send collaboration note";
 
 function showFormNote(kind, html) {
   if (!formNote) return;
@@ -90,15 +93,13 @@ function showFormNote(kind, html) {
 }
 
 function mailtoFallback(name, email, project, message) {
-  const subject = encodeURIComponent(`Collaboration inquiry — ${project}`);
-  const body = encodeURIComponent(
-    `Hi Raluca,\n\nMy name is ${name}.\nProject type: ${project}\nEmail: ${email}\n\n${message}\n`
-  );
   const inbox = CONTACT_INBOXES[0];
-  return (
-    `If it still does not arrive, email <a href="mailto:${inbox}?subject=${subject}&body=${body}">${inbox}</a> ` +
-    `or use the <a href="https://ralucavoinea.artweb.com/contact" target="_blank" rel="noopener noreferrer">Artweb contact form</a>.`
-  );
+  const subject = encodeURIComponent(t("formMailtoSubject", { project }));
+  const body = encodeURIComponent(t("formMailtoBody", { name, project, email, message }));
+  return t("formMailto", {
+    mailto: `mailto:${inbox}?subject=${subject}&body=${body}`,
+    inbox,
+  });
 }
 
 function isFormSubmitSuccess(result) {
@@ -143,18 +144,19 @@ form?.addEventListener("submit", async (event) => {
   const submitButton = form.querySelector("[data-submit-button]");
 
   if (!name || !email || !project || !message) {
-    showFormNote("error", "Please complete every field so Raluca can reply with context.");
+    showFormNote("error", t("formIncomplete"));
     return;
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    showFormNote("error", "Please enter a valid email address so Raluca can reply.");
+    showFormNote("error", t("formInvalidEmail"));
     return;
   }
 
   if (honeypot) {
-    showFormNote("success", `Thanks, ${name}. Your note was sent.`);
+    showFormNote("success", t("formHoneypot", { name }));
     form.reset();
+    applyLanguage(getLanguage());
     return;
   }
 
@@ -163,17 +165,18 @@ form?.addEventListener("submit", async (event) => {
     email,
     project,
     message,
+    language: t("languageName"),
     _replyto: email,
-    _subject: `Collaboration inquiry — ${project}`,
+    _subject: t("formMailtoSubject", { project }),
     _template: "table",
     _captcha: "false",
   };
 
   if (submitButton) {
     submitButton.disabled = true;
-    submitButton.textContent = "Sending…";
+    submitButton.textContent = t("formSending");
   }
-  showFormNote("success", "Sending your note…");
+  showFormNote("success", t("formSendingNote"));
 
   try {
     const results = await Promise.allSettled(FORMSUBMIT_ENDPOINTS.map((inbox) => sendToInbox(inbox, payload)));
@@ -181,11 +184,9 @@ form?.addEventListener("submit", async (event) => {
     const failed = results.filter((result) => result.status === "rejected");
 
     if (sent.length > 0) {
-      showFormNote(
-        "success",
-        `Thanks, ${name}. Your note was sent to Raluca. She’ll reply to ${email}.`
-      );
+      showFormNote("success", t("formThanks", { name, email }));
       form.reset();
+      applyLanguage(getLanguage());
       return;
     }
 
@@ -193,8 +194,7 @@ form?.addEventListener("submit", async (event) => {
     if (activationNeeded) {
       showFormNote(
         "error",
-        `The inbox still needs a one-time confirmation from FormSubmit. Please check raluca_voinea@outlook.com, ralucapopescudumitrescu@gmail.com, and info@ralucavoinea.ch for an activation email, click the link, then send this form again. ` +
-          mailtoFallback(name, email, project, message)
+        t("formActivation") + mailtoFallback(name, email, project, message)
       );
       return;
     }
@@ -205,14 +205,11 @@ form?.addEventListener("submit", async (event) => {
       return;
     }
 
-    showFormNote(
-      "error",
-      `The note could not be delivered automatically. ${mailtoFallback(name, email, project, message)}`
-    );
+    showFormNote("error", t("formFailed") + mailtoFallback(name, email, project, message));
   } finally {
     if (submitButton) {
       submitButton.disabled = false;
-      submitButton.textContent = SUBMIT_LABEL;
+      submitButton.textContent = t("formSubmit");
     }
   }
 });
