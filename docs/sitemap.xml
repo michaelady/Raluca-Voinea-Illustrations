@@ -15,8 +15,8 @@
       <image:title>Snow Poem</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://www.ralucavoinea.ch/artwork/silence.jpg</image:loc>
-      <image:title>Silence</image:title>
+      <image:loc>https://www.ralucavoinea.ch/artwork/la-nuit.jpg</image:loc>
+      <image:title>La Nuit</image:title>
     </image:image>
   </url>
   <url>
@@ -24,5 +24,17 @@
     <lastmod>2026-09-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.ralucavoinea.ch/artwork/coming-back.jpg</image:loc>
+      <image:title>Coming Back</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.ralucavoinea.ch/artwork/instagram/08-sweet-child.jpg</image:loc>
+      <image:title>Sweet Child</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.ralucavoinea.ch/artwork/hilma-tribute.jpg</image:loc>
+      <image:title>Hilma Tribute</image:title>
+    </image:image>
   </url>
 </urlset>
