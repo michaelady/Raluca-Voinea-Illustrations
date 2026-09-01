@@ -1,4 +1,4 @@
-import { cpSync, mkdirSync, rmSync, writeFileSync, existsSync } from "node:fs";
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const dist = "dist";
@@ -27,6 +27,18 @@ if (existsSync("public/artwork")) {
 }
 if (existsSync("public/favicon.svg")) {
   cpSync("public/favicon.svg", "favicon.svg");
+}
+
+// Search engines treat a stale lastmod as a signal the site is unmaintained.
+// Every deploy changes the published files, so stamp the deploy date.
+const sitemapPath = join(docs, "sitemap.xml");
+if (existsSync(sitemapPath)) {
+  const today = new Date().toISOString().slice(0, 10);
+  const stamped = readFileSync(sitemapPath, "utf8").replace(
+    /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/g,
+    `<lastmod>${today}</lastmod>`
+  );
+  writeFileSync(sitemapPath, stamped);
 }
 
 console.log("Synced dist/ → docs/ and public artwork → repo root.");
