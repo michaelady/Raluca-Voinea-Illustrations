@@ -135,6 +135,48 @@ textarea {
   color: var(--lake-deep);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.08rem;
+  padding: 0.14rem;
+  border: 1px solid rgba(27, 24, 36, 0.16);
+  border-radius: 999px;
+  background: rgba(250, 244, 235, 0.78);
+}
+
+.lang-switch button {
+  min-width: 2.05rem;
+  min-height: 1.85rem;
+  padding: 0 0.32rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.lang-switch button:hover,
+.lang-switch button:focus-visible {
+  background: rgba(27, 24, 36, 0.08);
+}
+
+.lang-switch button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .nav-cta,
 .header-cta {
   display: inline-flex;
@@ -834,6 +876,18 @@ textarea {
   color: #f7fafc;
   cursor: pointer;
   font-weight: 600;
+}
+
+@media (max-width: 419px) {
+  .logo {
+    font-size: 1.08rem;
+  }
+
+  .header-cta {
+    min-height: 2.2rem;
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+  }
 }
 
 @media (min-width: 720px) {
