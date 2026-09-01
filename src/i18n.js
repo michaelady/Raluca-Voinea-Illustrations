@@ -1,11 +1,11 @@
-export const LANGUAGES = ["en", "fr", "de", "ro", "it"];
-export const LANGUAGE_LABELS = { en: "EN", fr: "FR", de: "DE", ro: "RO", it: "IT" };
+export const LANGUAGES = ["en", "fr", "de", "it", "ro"];
+export const LANGUAGE_LABELS = { en: "EN", fr: "FR", de: "DE", it: "IT", ro: "RO" };
 export const OG_LOCALES = {
   en: "en_GB",
   fr: "fr_CH",
   de: "de_CH",
-  ro: "ro_RO",
   it: "it_CH",
+  ro: "ro_RO",
 };
 
 const INSTAGRAM =
