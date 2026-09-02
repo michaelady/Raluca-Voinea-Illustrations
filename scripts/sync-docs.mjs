@@ -18,9 +18,9 @@ if (existsSync("CNAME")) {
   cpSync("CNAME", join(docs, "CNAME"));
 }
 
-// Vite serves files from public/ at the site root, so HTML uses ./artwork/...
+// Vite copies public/ to the site root, so HTML uses /artwork/...
 // GitHub Pages may publish the repo root (not /docs). Keep a root copy so
-// those deploys can resolve the same relative image paths.
+// those deploys can resolve the same image paths.
 if (existsSync("public/artwork")) {
   rmSync("artwork", { recursive: true, force: true });
   cpSync("public/artwork", "artwork", { recursive: true });

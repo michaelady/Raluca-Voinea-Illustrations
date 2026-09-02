@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Illustration Gallery — Raluca Voinea, Neuchâtel</title>
-    <link rel="icon" href="./assets/favicon-CYS8ntoo.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta
       name="description"
       content="Illustrations by painter and graphic designer Raluca Voinea in Neuchâtel, Switzerland — portraits, nature, atmosphere, tributes, and book covers."
@@ -15,6 +15,12 @@
     <meta name="geo.region" content="CH-NE" />
     <meta name="geo.placename" content="Neuchâtel" />
     <link rel="canonical" href="https://www.ralucavoinea.ch/gallery.html" />
+    <link rel="alternate" hreflang="en" href="https://www.ralucavoinea.ch/gallery.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.ralucavoinea.ch/fr/gallery.html" />
+    <link rel="alternate" hreflang="de" href="https://www.ralucavoinea.ch/de/gallery.html" />
+    <link rel="alternate" hreflang="it" href="https://www.ralucavoinea.ch/it/gallery.html" />
+    <link rel="alternate" hreflang="ro" href="https://www.ralucavoinea.ch/ro/gallery.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.ralucavoinea.ch/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:locale:alternate" content="fr_CH" />
@@ -37,17 +43,6 @@
       content="Illustrations by painter and graphic designer Raluca Voinea in Neuchâtel, Switzerland — portraits, nature, atmosphere, tributes, and book covers."
     />
     <meta name="twitter:image" content="https://www.ralucavoinea.ch/artwork/coming-back.jpg" />
-    <script>
-      (function () {
-        try {
-          var fromUrl = new URLSearchParams(location.search).get("lang");
-          var stored = localStorage.getItem("site-lang");
-          var lang = fromUrl || stored;
-          if (lang === "fr" || lang === "de" || lang === "en" || lang === "ro" || lang === "it")
-            document.documentElement.lang = lang;
-        } catch (e) {}
-      })();
-    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -75,8 +70,8 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/main-etkivVWS.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/main-EXO9Ty3E.css">
+    <script type="module" crossorigin src="/assets/main-BVI8u6-4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-bQuLQjZL.css">
   </head>
   <body class="page-gallery">
     <div class="atmosphere" aria-hidden="true"></div>
@@ -92,11 +87,11 @@
       </nav>
       <div class="header-actions">
         <nav class="lang-switch" data-lang-switch data-i18n-aria="navLanguage" aria-label="Language">
-          <button type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
-          <button type="button" data-lang="de" aria-pressed="false">DE</button>
-          <button type="button" data-lang="it" aria-pressed="false">IT</button>
-          <button type="button" data-lang="ro" aria-pressed="false">RO</button>
+          <a href="/gallery.html" hreflang="en" data-lang="en" aria-current="page">EN</a>
+          <a href="/fr/gallery.html" hreflang="fr" data-lang="fr">FR</a>
+          <a href="/de/gallery.html" hreflang="de" data-lang="de">DE</a>
+          <a href="/it/gallery.html" hreflang="it" data-lang="it">IT</a>
+          <a href="/ro/gallery.html" hreflang="ro" data-lang="ro">RO</a>
         </nav>
         <a class="header-cta" href="./index.html" data-i18n="navHome">Home</a>
       </div>
@@ -139,7 +134,7 @@
         <div class="gallery">
           <article class="piece" style="--d: 0">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/08-sweet-child-CHO4MBE3.jpg" alt="Sweet Child" loading="lazy" />
+              <img src="/artwork/instagram/08-sweet-child.jpg" alt="Sweet Child" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Sweet Child</span>
                 <span class="piece-tag" data-i18n="tagPortrait">Portrait</span>
@@ -148,7 +143,7 @@
           </article>
           <article class="piece" style="--d: 1">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/10-my-muse-z2GOREc8.jpg" alt="My Muse" loading="lazy" />
+              <img src="/artwork/instagram/10-my-muse.jpg" alt="My Muse" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">My Muse</span>
                 <span class="piece-tag" data-i18n="tagPortrait">Portrait</span>
@@ -157,7 +152,7 @@
           </article>
           <article class="piece" style="--d: 2">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/silence-DaAPaRaQ.jpg" alt="Silence" loading="lazy" />
+              <img src="/artwork/silence.jpg" alt="Silence" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Silence</span>
                 <span class="piece-tag" data-i18n="tagPortrait">Portrait</span>
@@ -166,7 +161,7 @@
           </article>
           <article class="piece" style="--d: 3">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/snow-poem-_ckADgWA.jpg" alt="Snow Poem" loading="lazy" />
+              <img src="/artwork/snow-poem.jpg" alt="Snow Poem" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Snow Poem</span>
                 <span class="piece-tag" data-i18n="tagFantasyPortrait">Fantasy portrait</span>
@@ -175,7 +170,7 @@
           </article>
           <article class="piece" style="--d: 4">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/break-dancer-Cg9UrmI8.jpg" alt="Break Dancer" loading="lazy" />
+              <img src="/artwork/break-dancer.jpg" alt="Break Dancer" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Break Dancer</span>
                 <span class="piece-tag" data-i18n="tagFigure">Figure</span>
@@ -194,7 +189,7 @@
           <article class="piece" style="--d: 0">
             <button type="button" class="piece-trigger" data-lightbox>
               <img
-                src="./assets/09-did-you-know-that-magnolia-trees-with-their-anci-nLPa-Slc.jpg"
+                src="/artwork/instagram/09-did-you-know-that-magnolia-trees-with-their-anci.jpg"
                 alt="Magnolia"
                 loading="lazy"
               />
@@ -207,7 +202,7 @@
           <article class="piece" style="--d: 1">
             <button type="button" class="piece-trigger" data-lightbox>
               <img
-                src="./assets/07-did-you-know-that-capybara-moms-rely-on-support--C9-Pp4uj.jpg"
+                src="/artwork/instagram/07-did-you-know-that-capybara-moms-rely-on-support-.jpg"
                 alt="Capybara Family"
                 loading="lazy"
               />
@@ -219,7 +214,7 @@
           </article>
           <article class="piece" style="--d: 2">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/the-antagonist-C5h4_ceY.jpg" alt="The Antagonist" loading="lazy" />
+              <img src="/artwork/the-antagonist.jpg" alt="The Antagonist" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">The Antagonist</span>
                 <span class="piece-tag" data-i18n="tagMoths">Moths</span>
@@ -228,7 +223,7 @@
           </article>
           <article class="piece" style="--d: 3">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/la-nuit-Cx_sjsIU.jpg" alt="La Nuit" loading="lazy" />
+              <img src="/artwork/la-nuit.jpg" alt="La Nuit" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">La Nuit</span>
                 <span class="piece-tag" data-i18n="tagSwan">Swan</span>
@@ -246,7 +241,7 @@
         <div class="gallery">
           <article class="piece" style="--d: 0">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/coming-back-BgBcR6fY.jpg" alt="Coming Back" loading="lazy" />
+              <img src="/artwork/coming-back.jpg" alt="Coming Back" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Coming Back</span>
                 <span class="piece-tag" data-i18n="tagNightValley">Night valley</span>
@@ -255,7 +250,7 @@
           </article>
           <article class="piece" style="--d: 1">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/her-mind-DyDBSHIU.jpg" alt="Her Mind" loading="lazy" />
+              <img src="/artwork/her-mind.jpg" alt="Her Mind" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Her Mind</span>
                 <span class="piece-tag" data-i18n="tagAtmosphere">Atmosphere</span>
@@ -264,7 +259,7 @@
           </article>
           <article class="piece" style="--d: 2">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/story-of-a-blizzard-CvBkA4ay.jpg" alt="Story Of A Blizzard" loading="lazy" />
+              <img src="/artwork/story-of-a-blizzard.jpg" alt="Story Of A Blizzard" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Story Of A Blizzard</span>
                 <span class="piece-tag" data-i18n="tagWeather">Weather</span>
@@ -274,7 +269,7 @@
           <article class="piece" style="--d: 3">
             <button type="button" class="piece-trigger" data-lightbox>
               <img
-                src="./assets/we-will-always-have-torrevieja-DrFebeEg.jpg"
+                src="/artwork/we-will-always-have-torrevieja.jpg"
                 alt="We will Always Have Torrevieja"
                 loading="lazy"
               />
@@ -286,7 +281,7 @@
           </article>
           <article class="piece" style="--d: 4">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/night-watch-CCDa-yuq.jpg" alt="Night Watch" loading="lazy" />
+              <img src="/artwork/night-watch.jpg" alt="Night Watch" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Night Watch</span>
                 <span class="piece-tag" data-i18n="tagNight">Night</span>
@@ -296,7 +291,7 @@
           <article class="piece" style="--d: 5">
             <button type="button" class="piece-trigger" data-lightbox>
               <img
-                src="./assets/03-we-ll-always-have-torrevieja-BP09jykE.jpg"
+                src="/artwork/instagram/03-we-ll-always-have-torrevieja.jpg"
                 alt="We'll always have Torrevieja"
                 loading="lazy"
               />
@@ -317,7 +312,7 @@
         <div class="gallery">
           <article class="piece" style="--d: 0">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/01-faith-ringgold-B-3vZkOv.jpg" alt="Faith Ringgold" loading="lazy" />
+              <img src="/artwork/instagram/01-faith-ringgold.jpg" alt="Faith Ringgold" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Faith Ringgold</span>
                 <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
@@ -326,7 +321,7 @@
           </article>
           <article class="piece" style="--d: 1">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/hilma-tribute-Cxvid7ci.jpg" alt="Hilma Tribute" loading="lazy" />
+              <img src="/artwork/hilma-tribute.jpg" alt="Hilma Tribute" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Hilma Tribute</span>
                 <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
@@ -335,7 +330,7 @@
           </article>
           <article class="piece" style="--d: 2">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/niki-tribute-BVe5FqCI.jpg" alt="Niki Tribute" loading="lazy" />
+              <img src="/artwork/niki-tribute.jpg" alt="Niki Tribute" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Niki Tribute</span>
                 <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
@@ -344,7 +339,7 @@
           </article>
           <article class="piece" style="--d: 3">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/tamara-tribute-lwQq3Lxh.jpg" alt="Tamara Tribute" loading="lazy" />
+              <img src="/artwork/tamara-tribute.jpg" alt="Tamara Tribute" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Tamara Tribute</span>
                 <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
@@ -353,7 +348,7 @@
           </article>
           <article class="piece" style="--d: 4">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/yayoi-tribute-DsxfRii0.jpg" alt="Yayoi Tribute" loading="lazy" />
+              <img src="/artwork/yayoi-tribute.jpg" alt="Yayoi Tribute" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Yayoi Tribute</span>
                 <span class="piece-tag" data-i18n="tagTribute">Tribute</span>
@@ -372,7 +367,7 @@
           <article class="piece" style="--d: 0">
             <button type="button" class="piece-trigger" data-lightbox>
               <img
-                src="./assets/02-where-are-you-going-sweet-girl-4ylDwRPK.jpg"
+                src="/artwork/instagram/02-where-are-you-going-sweet-girl.jpg"
                 alt="Where are you going, sweet girl?"
                 loading="lazy"
               />
@@ -384,7 +379,7 @@
           </article>
           <article class="piece" style="--d: 1">
             <button type="button" class="piece-trigger" data-lightbox>
-              <img src="./assets/12-hey-C4v-OVYq.jpg" alt="Book Cover Study" loading="lazy" />
+              <img src="/artwork/instagram/12-hey.jpg" alt="Book Cover Study" loading="lazy" />
               <span class="piece-meta">
                 <span class="piece-title">Book Cover Study</span>
                 <span class="piece-tag" data-i18n="tagPublishing">Publishing</span>
@@ -394,7 +389,7 @@
           <article class="piece" style="--d: 2">
             <button type="button" class="piece-trigger" data-lightbox>
               <img
-                src="./assets/11-swipe-for-a-2nd-version-of-my-gaga-portrait-BCsMjXnt.jpg"
+                src="/artwork/instagram/11-swipe-for-a-2nd-version-of-my-gaga-portrait.jpg"
                 alt="Gaga Portrait magazine cover"
                 loading="lazy"
               />

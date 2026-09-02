@@ -1,7 +1,18 @@
 const KEY = "bddfa6db908c47519623860a975b344d";
 const HOST = "www.ralucavoinea.ch";
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
-const URLS = [`https://${HOST}/`, `https://${HOST}/gallery.html`];
+const URLS = [
+  `https://${HOST}/`,
+  `https://${HOST}/gallery.html`,
+  `https://${HOST}/fr/`,
+  `https://${HOST}/fr/gallery.html`,
+  `https://${HOST}/de/`,
+  `https://${HOST}/de/gallery.html`,
+  `https://${HOST}/it/`,
+  `https://${HOST}/it/gallery.html`,
+  `https://${HOST}/ro/`,
+  `https://${HOST}/ro/gallery.html`,
+];
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 
 async function waitForKeyFile() {

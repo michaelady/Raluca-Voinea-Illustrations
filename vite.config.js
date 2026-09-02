@@ -1,12 +1,14 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
+import { i18nPagesPlugin } from "./scripts/i18n-pages-plugin.js";
 
-// Relative base so built files work on GitHub Pages project sites
-// (e.g. /Raluca-Voinea-Illustrations/) without hardcoding the repo name.
+// Root-absolute base so locale pages at /fr/ (etc.) can load /assets and /artwork
+// on the custom domain (www.ralucavoinea.ch / GitHub Pages).
 export default defineConfig({
-  base: "./",
+  base: "/",
   root: ".",
   publicDir: "public",
+  plugins: [i18nPagesPlugin()],
   build: {
     outDir: "dist",
     emptyOutDir: true,
