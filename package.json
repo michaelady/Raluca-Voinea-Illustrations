@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/verify-i18n-pages.mjs",
     "preview": "vite preview",
-    "build:docs": "vite build && node scripts/sync-docs.mjs",
+    "build:docs": "npm run build && node scripts/sync-docs.mjs",
     "indexnow": "node scripts/notify-indexnow.mjs"
   },
   "devDependencies": {

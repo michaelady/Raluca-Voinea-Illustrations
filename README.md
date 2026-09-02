@@ -20,8 +20,9 @@ Artwork files in `public/artwork/` are downloaded from her Artweb CDN and remain
 The published site allows Google and Bing to crawl it:
 
 - `robots.txt` allows Googlebot, Bingbot, and related crawlers, and points to the sitemap
-- `sitemap.xml` lists the home and gallery pages
-- Each page has `index, follow` robots tags, a canonical URL, Open Graph tags, and JSON-LD
+- `sitemap.xml` lists the home and gallery pages in English, French, German, Italian, and Romanian
+- Each page has `index, follow` robots tags, a canonical URL, `hreflang` alternates, Open Graph tags, and JSON-LD
+- French (and the other locale) pages are real HTML files (`/fr/`, `/fr/gallery.html`, …) so crawlers see `lang`, titles, and body copy without JavaScript
 - After each GitHub Pages deploy, [IndexNow](https://www.indexnow.org/) notifies Bing that the URLs changed
 
 After deploy, request indexing (this still has to be done in each dashboard):
@@ -79,5 +80,16 @@ The visitor’s address is set as Reply-To. The first submission to each inbox a
 
 ## Site pages
 
-1. **Home (`index.html`)** — hero, curated selection (~half the works), collaborate, about, contact  
-2. **Gallery (`gallery.html`)** — more works grouped by subject (Portraits, Nature, Atmosphere, Tributes, Books)  
+1. **Home (`/`)** — hero, curated selection (~half the works), collaborate, about, contact  
+2. **Gallery (`/gallery.html`)** — more works grouped by subject (Portraits, Nature, Atmosphere, Tributes, Books)
+
+Locale copies are generated at build time from the same templates and i18n dictionary:
+
+- French: `/fr/` and `/fr/gallery.html` (GitHub Pages serves `docs/fr/index.html`)
+- German: `/de/` · Italian: `/it/` · Romanian: `/ro/` (same gallery filename pattern)
+
+The language switcher is real links to those paths. English stays at `/` and `/gallery.html`. Old `?lang=fr` bookmarks client-redirect to `/fr/`.
+
+## Languages
+
+Search engines receive a separate HTML document per locale. Visible strings, titles, meta, image alts, and JSON-LD `inLanguage` / `jobTitle` come from `src/i18n.js` — the build does not machine-translate from English. JavaScript still hydrates the contact form and lightbox on every locale page.  

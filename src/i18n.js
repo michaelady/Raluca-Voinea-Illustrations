@@ -1,5 +1,7 @@
 export const LANGUAGES = ["en", "fr", "de", "it", "ro"];
+export const PREFIX_LOCALES = ["fr", "de", "it", "ro"];
 export const LANGUAGE_LABELS = { en: "EN", fr: "FR", de: "DE", it: "IT", ro: "RO" };
+export const SITE_ORIGIN = "https://www.ralucavoinea.ch";
 export const OG_LOCALES = {
   en: "en_GB",
   fr: "fr_CH",
@@ -7,6 +9,28 @@ export const OG_LOCALES = {
   it: "it_CH",
   ro: "ro_RO",
 };
+
+export function localeHomePath(lang) {
+  return lang === "en" ? "/" : `/${lang}/`;
+}
+
+export function localeGalleryPath(lang) {
+  return lang === "en" ? "/gallery.html" : `/${lang}/gallery.html`;
+}
+
+export function localeHomeUrl(lang) {
+  return `${SITE_ORIGIN}${localeHomePath(lang)}`;
+}
+
+export function localeGalleryUrl(lang) {
+  return `${SITE_ORIGIN}${localeGalleryPath(lang)}`;
+}
+
+export function languageFromPath(pathname) {
+  const first = String(pathname || "/").split("/").filter(Boolean)[0];
+  if (PREFIX_LOCALES.includes(first)) return first;
+  return "en";
+}
 
 const INSTAGRAM =
   '<a href="https://www.instagram.com/ralu.voinea.illustration/" target="_blank" rel="noopener noreferrer">@ralu.voinea.illustration</a>';
@@ -25,6 +49,7 @@ export const translations = {
       "Illustrations by painter and graphic designer Raluca Voinea in Neuchâtel, Switzerland — portraits, nature, atmosphere, tributes, and book covers.",
     ogDescription:
       "Illustrator, painter and graphic designer in Neuchâtel, Switzerland. Portraits, children’s books, murals, and custom illustrations.",
+    jobTitle: "Illustrator, painter and graphic designer",
     languageName: "English",
     navPrimary: "Primary",
     navMobile: "Mobile",
@@ -169,6 +194,7 @@ export const translations = {
       "Illustrations de la peintre et graphiste Raluca Voinea à Neuchâtel, Suisse — portraits, nature, atmosphères, hommages et couvertures.",
     ogDescription:
       "Illustratrice, peintre et graphiste à Neuchâtel, Suisse. Portraits, livres pour enfants, fresques et illustrations sur mesure.",
+    jobTitle: "Illustratrice, peintre et graphiste",
     languageName: "Français",
     navPrimary: "Principal",
     navMobile: "Mobile",
@@ -311,6 +337,7 @@ export const translations = {
       "Illustrationen der Malerin und Grafikerin Raluca Voinea in Neuchâtel, Schweiz — Porträts, Natur, Stimmung, Hommagen und Buchcover.",
     ogDescription:
       "Illustratorin, Malerin und Grafikerin in Neuchâtel, Schweiz. Porträts, Kinderbücher, Wandbilder und individuelle Illustrationen.",
+    jobTitle: "Illustratorin, Malerin und Grafikerin",
     languageName: "Deutsch",
     navPrimary: "Hauptnavigation",
     navMobile: "Mobil",
@@ -453,6 +480,7 @@ export const translations = {
       "Ilustrații de Raluca Voinea, pictoriță și graphic designer în Neuchâtel, Elveția — portrete, natură, atmosferă, omagii și coperți.",
     ogDescription:
       "Ilustratoare, pictoriță și graphic designer în Neuchâtel, Elveția. Portrete, cărți pentru copii, muraluri și ilustrații la comandă.",
+    jobTitle: "Ilustratoare, pictoriță și graphic designer",
     languageName: "Română",
     navPrimary: "Principal",
     navMobile: "Mobil",
@@ -595,6 +623,7 @@ export const translations = {
       "Illustrazioni di Raluca Voinea, pittrice e graphic designer a Neuchâtel, Svizzera — ritratti, natura, atmosfere, omaggi e copertine.",
     ogDescription:
       "Illustratrice, pittrice e graphic designer a Neuchâtel, Svizzera. Ritratti, libri per bambini, murales e illustrazioni su misura.",
+    jobTitle: "Illustratrice, pittrice e graphic designer",
     languageName: "Italiano",
     navPrimary: "Principale",
     navMobile: "Mobile",
@@ -746,18 +775,7 @@ export function getLanguage() {
 }
 
 export function detectLanguage() {
-  const params = new URLSearchParams(window.location.search);
-  const fromUrl = params.get("lang")?.toLowerCase();
-  if (LANGUAGES.includes(fromUrl)) return fromUrl;
-  try {
-    const stored = localStorage.getItem("site-lang");
-    if (LANGUAGES.includes(stored)) return stored;
-  } catch {
-    /* ignore */
-  }
-  const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
-  if (LANGUAGES.includes(nav)) return nav;
-  return "en";
+  return languageFromPath(window.location.pathname);
 }
 
 function setMeta(selector, attribute, value) {
@@ -765,23 +783,9 @@ function setMeta(selector, attribute, value) {
   if (el && value) el.setAttribute(attribute, value);
 }
 
-function withLangParam(url, lang) {
-  if (lang === "en") url.searchParams.delete("lang");
-  else url.searchParams.set("lang", lang);
-  return url;
-}
-
-function localizeInternalLinks(lang) {
-  document.querySelectorAll("a[href]").forEach((anchor) => {
-    const href = anchor.getAttribute("href");
-    if (!href || /^(https?:|mailto:|tel:)/i.test(href) || href.startsWith("#")) return;
-    const url = new URL(href, window.location.href);
-    if (url.origin !== window.location.origin) return;
-    withLangParam(url, lang);
-    const file = url.pathname.split("/").pop() || "index.html";
-    const prefix = href.startsWith("./") ? "./" : "";
-    anchor.setAttribute("href", `${prefix}${file}${url.search}${url.hash}`);
-  });
+function localePagePath(lang) {
+  const isGallery = document.body.classList.contains("page-gallery");
+  return isGallery ? localeGalleryPath(lang) : localeHomePath(lang);
 }
 
 export function applyLanguage(lang) {
@@ -826,20 +830,22 @@ export function applyLanguage(lang) {
   const subject = document.querySelector('[name="_subject"]');
   if (subject) subject.value = dict.formSubject;
   const next = document.querySelector('[name="_next"]');
-  if (next) {
-    const nextUrl = new URL("https://www.ralucavoinea.ch/");
-    withLangParam(nextUrl, currentLang);
-    nextUrl.hash = "contact";
-    next.value = nextUrl.toString();
-  }
+  if (next) next.value = `${localeHomeUrl(currentLang)}#contact`;
   const languageField = document.querySelector("[data-lang-field]");
   if (languageField) languageField.value = dict.languageName;
 
-  localizeInternalLinks(currentLang);
-
-  document.querySelectorAll("[data-lang]").forEach((button) => {
-    const active = button.getAttribute("data-lang") === currentLang;
-    button.setAttribute("aria-pressed", String(active));
+  document.querySelectorAll("[data-lang]").forEach((el) => {
+    const active = el.getAttribute("data-lang") === currentLang;
+    if (el.tagName === "BUTTON") {
+      el.setAttribute("aria-pressed", String(active));
+      el.removeAttribute("aria-current");
+    } else if (active) {
+      el.setAttribute("aria-current", "page");
+      el.removeAttribute("aria-pressed");
+    } else {
+      el.removeAttribute("aria-current");
+      el.removeAttribute("aria-pressed");
+    }
   });
 
   try {
@@ -847,16 +853,29 @@ export function applyLanguage(lang) {
   } catch {
     /* ignore */
   }
-
-  const url = withLangParam(new URL(window.location.href), currentLang);
-  history.replaceState({}, "", url);
 }
 
 export function initLanguageSwitcher() {
-  applyLanguage(detectLanguage());
-  document.querySelectorAll("[data-lang]").forEach((button) => {
-    button.addEventListener("click", () => {
-      applyLanguage(button.getAttribute("data-lang"));
+  const params = new URLSearchParams(window.location.search);
+  const queryLang = params.get("lang")?.toLowerCase();
+  const pathLang = languageFromPath(window.location.pathname);
+
+  if (queryLang && LANGUAGES.includes(queryLang) && queryLang !== pathLang) {
+    const target = new URL(localePagePath(queryLang), window.location.origin);
+    target.hash = window.location.hash;
+    window.location.replace(`${target.pathname}${target.hash}`);
+    return;
+  }
+
+  applyLanguage(pathLang);
+
+  document.querySelectorAll("[data-lang]").forEach((el) => {
+    el.addEventListener("click", () => {
+      try {
+        localStorage.setItem("site-lang", el.getAttribute("data-lang"));
+      } catch {
+        /* ignore */
+      }
     });
   });
 }
