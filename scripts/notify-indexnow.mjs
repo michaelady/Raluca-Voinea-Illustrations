@@ -1,7 +1,9 @@
+import { LANGUAGES, pageUrl } from "../src/i18n.js";
+
 const KEY = "bddfa6db908c47519623860a975b344d";
 const HOST = "www.ralucavoinea.ch";
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
-const URLS = [`https://${HOST}/`, `https://${HOST}/gallery.html`];
+const URLS = LANGUAGES.flatMap((lang) => [pageUrl(lang), pageUrl(lang, true)]);
 const ENDPOINT = "https://api.indexnow.org/indexnow";
 
 async function waitForKeyFile() {

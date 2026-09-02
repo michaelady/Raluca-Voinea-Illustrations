@@ -15,6 +15,12 @@
     <meta name="geo.region" content="CH-NE" />
     <meta name="geo.placename" content="Neuchâtel" />
     <link rel="canonical" href="https://www.ralucavoinea.ch/" />
+    <link rel="alternate" hreflang="en" href="https://www.ralucavoinea.ch/" />
+    <link rel="alternate" hreflang="fr" href="https://www.ralucavoinea.ch/fr/" />
+    <link rel="alternate" hreflang="de" href="https://www.ralucavoinea.ch/de/" />
+    <link rel="alternate" hreflang="it" href="https://www.ralucavoinea.ch/it/" />
+    <link rel="alternate" hreflang="ro" href="https://www.ralucavoinea.ch/ro/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.ralucavoinea.ch/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:locale:alternate" content="fr_CH" />
@@ -40,11 +46,11 @@
     <script>
       (function () {
         try {
-          var fromUrl = new URLSearchParams(location.search).get("lang");
-          var stored = localStorage.getItem("site-lang");
-          var lang = fromUrl || stored;
-          if (lang === "fr" || lang === "de" || lang === "en" || lang === "ro" || lang === "it")
-            document.documentElement.lang = lang;
+          var lang = new URLSearchParams(location.search).get("lang");
+          if (lang === "fr" || lang === "de" || lang === "it" || lang === "ro") {
+            location.replace("/" + lang + "/" + location.hash);
+            return;
+          }
         } catch (e) {}
       })();
     </script>
@@ -136,11 +142,11 @@
       </nav>
       <div class="header-actions">
         <nav class="lang-switch" data-lang-switch data-i18n-aria="navLanguage" aria-label="Language">
-          <button type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
-          <button type="button" data-lang="de" aria-pressed="false">DE</button>
-          <button type="button" data-lang="it" aria-pressed="false">IT</button>
-          <button type="button" data-lang="ro" aria-pressed="false">RO</button>
+          <a href="/" data-lang="en" hreflang="en" aria-current="true">EN</a>
+          <a href="/fr/" data-lang="fr" hreflang="fr">FR</a>
+          <a href="/de/" data-lang="de" hreflang="de">DE</a>
+          <a href="/it/" data-lang="it" hreflang="it">IT</a>
+          <a href="/ro/" data-lang="ro" hreflang="ro">RO</a>
         </nav>
         <a class="header-cta" href="./gallery.html" data-i18n="navGallery">Gallery</a>
       </div>

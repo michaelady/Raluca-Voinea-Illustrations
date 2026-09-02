@@ -15,6 +15,12 @@
     <meta name="geo.region" content="CH-NE" />
     <meta name="geo.placename" content="Neuchâtel" />
     <link rel="canonical" href="https://www.ralucavoinea.ch/gallery.html" />
+    <link rel="alternate" hreflang="en" href="https://www.ralucavoinea.ch/gallery.html" />
+    <link rel="alternate" hreflang="fr" href="https://www.ralucavoinea.ch/fr/gallery.html" />
+    <link rel="alternate" hreflang="de" href="https://www.ralucavoinea.ch/de/gallery.html" />
+    <link rel="alternate" hreflang="it" href="https://www.ralucavoinea.ch/it/gallery.html" />
+    <link rel="alternate" hreflang="ro" href="https://www.ralucavoinea.ch/ro/gallery.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.ralucavoinea.ch/gallery.html" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:locale:alternate" content="fr_CH" />
@@ -40,11 +46,11 @@
     <script>
       (function () {
         try {
-          var fromUrl = new URLSearchParams(location.search).get("lang");
-          var stored = localStorage.getItem("site-lang");
-          var lang = fromUrl || stored;
-          if (lang === "fr" || lang === "de" || lang === "en" || lang === "ro" || lang === "it")
-            document.documentElement.lang = lang;
+          var lang = new URLSearchParams(location.search).get("lang");
+          if (lang === "fr" || lang === "de" || lang === "it" || lang === "ro") {
+            location.replace("/" + lang + "/gallery.html" + location.hash);
+            return;
+          }
         } catch (e) {}
       })();
     </script>
@@ -75,8 +81,8 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/main-etkivVWS.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/main-EXO9Ty3E.css">
+    <script type="module" crossorigin src="./assets/main-CCI0s-aZ.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/main-CM41vyCW.css">
   </head>
   <body class="page-gallery">
     <div class="atmosphere" aria-hidden="true"></div>
@@ -92,11 +98,11 @@
       </nav>
       <div class="header-actions">
         <nav class="lang-switch" data-lang-switch data-i18n-aria="navLanguage" aria-label="Language">
-          <button type="button" data-lang="en" aria-pressed="true">EN</button>
-          <button type="button" data-lang="fr" aria-pressed="false">FR</button>
-          <button type="button" data-lang="de" aria-pressed="false">DE</button>
-          <button type="button" data-lang="it" aria-pressed="false">IT</button>
-          <button type="button" data-lang="ro" aria-pressed="false">RO</button>
+          <a href="/gallery.html" data-lang="en" hreflang="en" aria-current="true">EN</a>
+          <a href="/fr/gallery.html" data-lang="fr" hreflang="fr">FR</a>
+          <a href="/de/gallery.html" data-lang="de" hreflang="de">DE</a>
+          <a href="/it/gallery.html" data-lang="it" hreflang="it">IT</a>
+          <a href="/ro/gallery.html" data-lang="ro" hreflang="ro">RO</a>
         </nav>
         <a class="header-cta" href="./index.html" data-i18n="navHome">Home</a>
       </div>
