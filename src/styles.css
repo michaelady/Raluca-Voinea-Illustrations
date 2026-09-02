@@ -152,6 +152,7 @@ textarea {
   background: rgba(250, 244, 235, 0.78);
 }
 
+.lang-switch a,
 .lang-switch button {
   min-width: 1.85rem;
   min-height: 1.75rem;
@@ -165,13 +166,21 @@ textarea {
   font-weight: 700;
   letter-spacing: 0.03em;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.lang-switch a:hover,
+.lang-switch a:focus-visible,
 .lang-switch button:hover,
 .lang-switch button:focus-visible {
   background: rgba(27, 24, 36, 0.08);
 }
 
+.lang-switch a[aria-current="true"],
+.lang-switch a[aria-pressed="true"],
 .lang-switch button[aria-pressed="true"] {
   background: var(--ink);
   color: var(--paper);
@@ -889,6 +898,7 @@ textarea {
     font-size: 0.76rem;
   }
 
+  .lang-switch a,
   .lang-switch button {
     min-width: 1.62rem;
     min-height: 1.62rem;
@@ -901,6 +911,7 @@ textarea {
     padding-bottom: 0;
   }
 
+  .lang-switch a,
   .lang-switch button {
     min-width: 2rem;
     min-height: 1.85rem;

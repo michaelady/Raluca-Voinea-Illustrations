@@ -1,5 +1,32 @@
 export const LANGUAGES = ["en", "fr", "de", "it", "ro"];
 export const LANGUAGE_LABELS = { en: "EN", fr: "FR", de: "DE", it: "IT", ro: "RO" };
+export const SITE_ORIGIN = "https://www.ralucavoinea.ch";
+
+export function pagePath(lang, isGallery = false) {
+  if (isGallery) return lang === "en" ? "/gallery.html" : `/${lang}/gallery.html`;
+  return lang === "en" ? "/" : `/${lang}/`;
+}
+
+export function pageUrl(lang, isGallery = false) {
+  return `${SITE_ORIGIN}${pagePath(lang, isGallery)}`;
+}
+
+export function hreflangSnippet(isGallery = false) {
+  const links = LANGUAGES.map(
+    (lang) =>
+      `<link rel="alternate" hreflang="${lang}" href="${pageUrl(lang, isGallery)}" />`
+  );
+  links.push(
+    `<link rel="alternate" hreflang="x-default" href="${pageUrl("en", isGallery)}" />`
+  );
+  return links.join("\n    ");
+}
+
+export function langFromPath(pathname = "/") {
+  const parts = pathname.split("/").filter(Boolean);
+  if (parts[0] && LANGUAGES.includes(parts[0])) return parts[0];
+  return "en";
+}
 export const OG_LOCALES = {
   en: "en_GB",
   fr: "fr_CH",
@@ -746,18 +773,7 @@ export function getLanguage() {
 }
 
 export function detectLanguage() {
-  const params = new URLSearchParams(window.location.search);
-  const fromUrl = params.get("lang")?.toLowerCase();
-  if (LANGUAGES.includes(fromUrl)) return fromUrl;
-  try {
-    const stored = localStorage.getItem("site-lang");
-    if (LANGUAGES.includes(stored)) return stored;
-  } catch {
-    /* ignore */
-  }
-  const nav = (navigator.language || "en").slice(0, 2).toLowerCase();
-  if (LANGUAGES.includes(nav)) return nav;
-  return "en";
+  return langFromPath(window.location.pathname);
 }
 
 function setMeta(selector, attribute, value) {
@@ -765,23 +781,14 @@ function setMeta(selector, attribute, value) {
   if (el && value) el.setAttribute(attribute, value);
 }
 
-function withLangParam(url, lang) {
-  if (lang === "en") url.searchParams.delete("lang");
-  else url.searchParams.set("lang", lang);
-  return url;
-}
-
-function localizeInternalLinks(lang) {
-  document.querySelectorAll("a[href]").forEach((anchor) => {
-    const href = anchor.getAttribute("href");
-    if (!href || /^(https?:|mailto:|tel:)/i.test(href) || href.startsWith("#")) return;
-    const url = new URL(href, window.location.href);
-    if (url.origin !== window.location.origin) return;
-    withLangParam(url, lang);
-    const file = url.pathname.split("/").pop() || "index.html";
-    const prefix = href.startsWith("./") ? "./" : "";
-    anchor.setAttribute("href", `${prefix}${file}${url.search}${url.hash}`);
-  });
+function redirectLegacyLangParam() {
+  const fromUrl = new URLSearchParams(window.location.search).get("lang")?.toLowerCase();
+  if (!LANGUAGES.includes(fromUrl)) return;
+  const isGallery = window.location.pathname.includes("gallery.html");
+  const dest = pagePath(fromUrl, isGallery) + window.location.hash;
+  const current = window.location.pathname.replace(/\/index\.html$/, "/") || "/";
+  if (current === pagePath(fromUrl, isGallery) && !window.location.search) return;
+  window.location.replace(dest);
 }
 
 export function applyLanguage(lang) {
@@ -826,20 +833,15 @@ export function applyLanguage(lang) {
   const subject = document.querySelector('[name="_subject"]');
   if (subject) subject.value = dict.formSubject;
   const next = document.querySelector('[name="_next"]');
-  if (next) {
-    const nextUrl = new URL("https://www.ralucavoinea.ch/");
-    withLangParam(nextUrl, currentLang);
-    nextUrl.hash = "contact";
-    next.value = nextUrl.toString();
-  }
+  if (next) next.value = `${pageUrl(currentLang)}#contact`;
   const languageField = document.querySelector("[data-lang-field]");
   if (languageField) languageField.value = dict.languageName;
 
-  localizeInternalLinks(currentLang);
-
-  document.querySelectorAll("[data-lang]").forEach((button) => {
-    const active = button.getAttribute("data-lang") === currentLang;
-    button.setAttribute("aria-pressed", String(active));
+  document.querySelectorAll("[data-lang]").forEach((el) => {
+    const active = el.getAttribute("data-lang") === currentLang;
+    el.setAttribute("aria-pressed", String(active));
+    if (active) el.setAttribute("aria-current", "true");
+    else el.removeAttribute("aria-current");
   });
 
   try {
@@ -847,16 +849,9 @@ export function applyLanguage(lang) {
   } catch {
     /* ignore */
   }
-
-  const url = withLangParam(new URL(window.location.href), currentLang);
-  history.replaceState({}, "", url);
 }
 
 export function initLanguageSwitcher() {
+  redirectLegacyLangParam();
   applyLanguage(detectLanguage());
-  document.querySelectorAll("[data-lang]").forEach((button) => {
-    button.addEventListener("click", () => {
-      applyLanguage(button.getAttribute("data-lang"));
-    });
-  });
 }
