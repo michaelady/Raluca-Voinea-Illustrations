@@ -7,6 +7,7 @@ import {
   pageUrl,
   translations,
 } from "../src/i18n.js";
+import { buildSitemapXml } from "./sitemap.mjs";
 
 const dist = "dist";
 const today = new Date().toISOString().slice(0, 10);
@@ -116,47 +117,6 @@ function addHreflang(html, isGallery) {
   return html.replace(/<link rel="canonical" href="[^"]*"\s*\/>/, (match) => `${match}\n${snippet}`);
 }
 
-function sitemapImages(entries) {
-  return entries
-    .map(
-      ([src, title]) => `    <image:image>
-      <image:loc>https://www.ralucavoinea.ch${src}</image:loc>
-      <image:title>${title}</image:title>
-    </image:image>`
-    )
-    .join("\n");
-}
-
-function sitemapUrl(lang, isGallery) {
-  const loc = pageUrl(lang, isGallery);
-  const images = isGallery
-    ? sitemapImages([
-        ["/artwork/coming-back.jpg", "Coming Back"],
-        ["/artwork/instagram/08-sweet-child.jpg", "Sweet Child"],
-        ["/artwork/hilma-tribute.jpg", "Hilma Tribute"],
-      ])
-    : sitemapImages([
-        ["/artwork/coming-back.jpg", "Coming Back"],
-        ["/artwork/snow-poem.jpg", "Snow Poem"],
-        ["/artwork/la-nuit.jpg", "La Nuit"],
-      ]);
-  const alternates = [...LANGUAGES, "x-default"]
-    .map((code) => {
-      const hrefLang = code === "x-default" ? "x-default" : code;
-      const href = pageUrl(code === "x-default" ? "en" : code, isGallery);
-      return `    <xhtml:link rel="alternate" hreflang="${hrefLang}" href="${href}" />`;
-    })
-    .join("\n");
-  return `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>${isGallery ? "0.8" : lang === "en" ? "1.0" : "0.9"}</priority>
-${alternates}
-${images}
-  </url>`;
-}
-
 const home = addHreflang(readFileSync(join(dist, "index.html"), "utf8"), false);
 const gallery = addHreflang(readFileSync(join(dist, "gallery.html"), "utf8"), true);
 writeFileSync(join(dist, "index.html"), home);
@@ -168,15 +128,8 @@ for (const lang of localizedLangs) {
   writeFileSync(join(dist, lang, "gallery.html"), localize(gallery, lang, true));
 }
 
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${LANGUAGES.map((lang) => sitemapUrl(lang, false)).join("\n")}
-${LANGUAGES.map((lang) => sitemapUrl(lang, true)).join("\n")}
-</urlset>
-`;
-writeFileSync(join(dist, "sitemap.xml"), sitemap);
+writeFileSync(join(dist, "sitemap.xml"), buildSitemapXml(today));
+writeFileSync(join("public", "sitemap.xml"), buildSitemapXml(today));
 
 console.log(
   `Wrote localized pages for ${localizedLangs.join(", ")} and a ${LANGUAGES.length * 2}-URL sitemap.`

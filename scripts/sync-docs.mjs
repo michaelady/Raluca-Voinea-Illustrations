@@ -1,4 +1,4 @@
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync, existsSync } from "node:fs";
+import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
 const dist = "dist";
@@ -15,7 +15,8 @@ cpSync(dist, docs, { recursive: true });
 writeFileSync(join(docs, ".nojekyll"), "");
 
 if (existsSync("CNAME")) {
-  cpSync("CNAME", join(docs, "CNAME"));
+  const cname = `${readFileSync("CNAME", "utf8").trim()}\n`;
+  writeFileSync(join(docs, "CNAME"), cname);
 }
 
 // Vite serves files from public/ at the site root, so HTML uses ./artwork/...
@@ -27,6 +28,15 @@ if (existsSync("public/artwork")) {
 }
 if (existsSync("public/favicon.svg")) {
   cpSync("public/favicon.svg", "favicon.svg");
+}
+
+// Keep IndexNow key files at the repo root as well, in case Pages publishes `/`.
+if (existsSync("public")) {
+  for (const name of readdirSync("public")) {
+    if (/^[a-zA-Z0-9-]{8,128}\.txt$/.test(name)) {
+      cpSync(join("public", name), name);
+    }
+  }
 }
 
 // Search engines treat a stale lastmod as a signal the site is unmaintained.

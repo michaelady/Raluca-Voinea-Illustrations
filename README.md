@@ -20,9 +20,9 @@ Artwork files in `public/artwork/` are downloaded from her Artweb CDN and remain
 The published site allows Google and Bing to crawl it:
 
 - `robots.txt` allows Googlebot, Bingbot, and related crawlers, and points to the sitemap
-- `sitemap.xml` lists the home and gallery pages
+- `public/sitemap.xml` is a static urlset (home and gallery in en/fr/de/it/ro, with hreflang and images). Builds copy it to the site root so `https://www.ralucavoinea.ch/sitemap.xml` stays 200 XML
 - Each page has `index, follow` robots tags, a canonical URL, Open Graph tags, and JSON-LD
-- After each GitHub Pages deploy, [IndexNow](https://www.indexnow.org/) notifies Bing that the URLs changed
+- [IndexNow](https://www.indexnow.org/) key files live at the site root (`/<key>.txt`). After each GitHub Pages deploy of `main`, the workflow POSTs every sitemap URL to `api.indexnow.org` and `www.bing.com/indexnow`
 
 After deploy, request indexing (this still has to be done in each dashboard):
 
