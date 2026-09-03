@@ -58,5 +58,5 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Notify Bing via IndexNow
+      - name: Notify Bing and IndexNow
         run: node scripts/notify-indexnow.mjs
