@@ -46,10 +46,15 @@
     <script>
       (function () {
         try {
+          var path = location.pathname;
           var lang = new URLSearchParams(location.search).get("lang");
           if (lang === "fr" || lang === "de" || lang === "it" || lang === "ro") {
-            location.replace("/" + lang + "/gallery.html" + location.hash);
+            var leaf = /gallery\.html$/i.test(path) ? "gallery.html" : "";
+            location.replace("/" + lang + "/" + leaf + location.hash);
             return;
+          }
+          if (/\/index\.html$/i.test(path)) {
+            location.replace(path.replace(/\/index\.html$/i, "/") + location.search + location.hash);
           }
         } catch (e) {}
       })();
@@ -81,20 +86,20 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="../assets/main-CCI0s-aZ.js"></script>
+    <script type="module" crossorigin src="../assets/main-BPOftyhi.js"></script>
     <link rel="stylesheet" crossorigin href="../assets/main-CM41vyCW.css">
   </head>
   <body class="page-gallery">
     <div class="atmosphere" aria-hidden="true"></div>
 
     <header class="site-header is-scrolled" data-header>
-      <a class="logo" href="./index.html#top">Raluca Voinea</a>
+      <a class="logo" href="./#top">Raluca Voinea</a>
       <nav class="nav" data-i18n-aria="navPrimary" aria-label="Principal">
-        <a href="./index.html#work" data-i18n="navWork">Lucrări</a>
+        <a href="./#work" data-i18n="navWork">Lucrări</a>
         <a class="is-current" href="./gallery.html" aria-current="page" data-i18n="navGallery">Galerie</a>
-        <a href="./index.html#services" data-i18n="navCollaborate">Colaborări</a>
-        <a href="./index.html#about" data-i18n="navAbout">Despre</a>
-        <a class="nav-cta" href="./index.html#contact" data-i18n="navStart">Începe un proiect</a>
+        <a href="./#services" data-i18n="navCollaborate">Colaborări</a>
+        <a href="./#about" data-i18n="navAbout">Despre</a>
+        <a class="nav-cta" href="./#contact" data-i18n="navStart">Începe un proiect</a>
       </nav>
       <div class="header-actions">
         <nav class="lang-switch" data-lang-switch data-i18n-aria="navLanguage" aria-label="Limbă">
@@ -104,15 +109,15 @@
           <a href="/it/gallery.html" data-lang="it" hreflang="it">IT</a>
           <a href="/ro/gallery.html" data-lang="ro" hreflang="ro" aria-current="true">RO</a>
         </nav>
-        <a class="header-cta" href="./index.html" data-i18n="navHome">Acasă</a>
+        <a class="header-cta" href="./" data-i18n="navHome">Acasă</a>
       </div>
     </header>
 
     <nav class="mobile-dock" data-i18n-aria="navMobile" aria-label="Mobil">
-      <a href="./index.html#top" data-i18n="navHome">Acasă</a>
-      <a href="./index.html#work" data-i18n="navWork">Lucrări</a>
+      <a href="./#top" data-i18n="navHome">Acasă</a>
+      <a href="./#work" data-i18n="navWork">Lucrări</a>
       <a class="is-active" href="./gallery.html" aria-current="page" data-i18n="navGallery">Galerie</a>
-      <a href="./index.html#contact" data-i18n="navContact">Contact</a>
+      <a href="./#contact" data-i18n="navContact">Contact</a>
       <a href="#portraits" data-i18n="navSubjects">Teme</a>
     </nav>
 
@@ -121,7 +126,7 @@
         <div class="section-head">
           <p class="eyebrow" data-i18n="galleryEyebrow">Arhivă</p>
           <h1 data-i18n="galleryTitle">Galerie pe teme</h1>
-          <p data-i18n-html="galleryIntro">Picturi și ilustrații digitale din atelierul din Neuchâtel, grupate pe teme. Revino oricând la <a href="./index.html">pagina principală</a>.</p>
+          <p data-i18n-html="galleryIntro">Picturi și ilustrații digitale din atelierul din Neuchâtel, grupate pe teme. Revino oricând la <a href="./">pagina principală</a>.</p>
         </div>
 
         <nav class="subject-nav" data-i18n-aria="subjectsNav" aria-label="Teme">
@@ -411,8 +416,8 @@
 
       <section class="section">
         <div class="page-nav">
-          <a class="btn btn-ghost-dark" href="./index.html#work" data-i18n="backSelected">Înapoi la lucrările alese</a>
-          <a class="btn btn-primary" href="./index.html#contact" data-i18n="startCollab">Începe o colaborare</a>
+          <a class="btn btn-ghost-dark" href="./#work" data-i18n="backSelected">Înapoi la lucrările alese</a>
+          <a class="btn btn-primary" href="./#contact" data-i18n="startCollab">Începe o colaborare</a>
         </div>
       </section>
     </main>
@@ -423,7 +428,7 @@
         <p data-i18n="galleryFooter">Galerie pe teme</p>
       </div>
       <p class="footer-credit">
-        <a href="./index.html" data-i18n="mainPage">Pagina principală</a> ·
+        <a href="./" data-i18n="mainPage">Pagina principală</a> ·
         <a href="https://www.instagram.com/ralu.voinea.illustration/" target="_blank" rel="noopener noreferrer"
           >@ralu.voinea.illustration</a
         >

@@ -165,7 +165,7 @@ export const translations = {
     galleryEyebrow: "Full archive",
     galleryTitle: "Gallery by subject",
     galleryIntro:
-      'Paintings and digital illustrations from the Neuchâtel studio, grouped by theme. Jump back anytime to the <a href="./index.html">main page</a>.',
+      'Paintings and digital illustrations from the Neuchâtel studio, grouped by theme. Jump back anytime to the <a href="./">main page</a>.',
     subjectPortraits: "Portraits",
     subjectNature: "Nature",
     subjectAtmosphere: "Atmosphere",
@@ -307,7 +307,7 @@ export const translations = {
     tagFantasyPortrait: "Portrait fantastique",
     galleryEyebrow: "Archives",
     galleryTitle: "Galerie par thème",
-    galleryIntro: 'Peintures et illustrations numériques de l’atelier de Neuchâtel, classées par thème. Revenez à tout moment à la <a href="./index.html">page d’accueil</a>.',
+    galleryIntro: 'Peintures et illustrations numériques de l’atelier de Neuchâtel, classées par thème. Revenez à tout moment à la <a href="./">page d’accueil</a>.',
     subjectPortraits: "Portraits",
     subjectNature: "Nature",
     subjectAtmosphere: "Atmosphère",
@@ -449,7 +449,7 @@ export const translations = {
     tagFantasyPortrait: "Fantasieporträt",
     galleryEyebrow: "Archiv",
     galleryTitle: "Galerie nach Thema",
-    galleryIntro: 'Gemälde und digitale Illustrationen aus dem Atelier in Neuchâtel, nach Thema geordnet. Jederzeit zurück zur <a href="./index.html">Hauptseite</a>.',
+    galleryIntro: 'Gemälde und digitale Illustrationen aus dem Atelier in Neuchâtel, nach Thema geordnet. Jederzeit zurück zur <a href="./">Hauptseite</a>.',
     subjectPortraits: "Porträts",
     subjectNature: "Natur",
     subjectAtmosphere: "Atmosphäre",
@@ -591,7 +591,7 @@ export const translations = {
     galleryEyebrow: "Arhivă",
     galleryTitle: "Galerie pe teme",
     galleryIntro:
-      'Picturi și ilustrații digitale din atelierul din Neuchâtel, grupate pe teme. Revino oricând la <a href="./index.html">pagina principală</a>.',
+      'Picturi și ilustrații digitale din atelierul din Neuchâtel, grupate pe teme. Revino oricând la <a href="./">pagina principală</a>.',
     subjectPortraits: "Portrete",
     subjectNature: "Natură",
     subjectAtmosphere: "Atmosferă",
@@ -733,7 +733,7 @@ export const translations = {
     galleryEyebrow: "Archivio",
     galleryTitle: "Galleria per tema",
     galleryIntro:
-      'Dipinti e illustrazioni digitali dall’atelier di Neuchâtel, raggruppati per tema. Torna quando vuoi alla <a href="./index.html">pagina principale</a>.',
+      'Dipinti e illustrazioni digitali dall’atelier di Neuchâtel, raggruppati per tema. Torna quando vuoi alla <a href="./">pagina principale</a>.',
     subjectPortraits: "Ritratti",
     subjectNature: "Natura",
     subjectAtmosphere: "Atmosfera",
@@ -781,12 +781,19 @@ function setMeta(selector, attribute, value) {
   if (el && value) el.setAttribute(attribute, value);
 }
 
+function redirectIndexHtml() {
+  const path = window.location.pathname;
+  if (!/\/index\.html$/i.test(path)) return;
+  const clean = `${path.replace(/\/index\.html$/i, "/")}${window.location.search}${window.location.hash}`;
+  window.location.replace(clean);
+}
+
 function redirectLegacyLangParam() {
   const fromUrl = new URLSearchParams(window.location.search).get("lang")?.toLowerCase();
   if (!LANGUAGES.includes(fromUrl)) return;
   const isGallery = window.location.pathname.includes("gallery.html");
   const dest = pagePath(fromUrl, isGallery) + window.location.hash;
-  const current = window.location.pathname.replace(/\/index\.html$/, "/") || "/";
+  const current = window.location.pathname.replace(/\/index\.html$/i, "/") || "/";
   if (current === pagePath(fromUrl, isGallery) && !window.location.search) return;
   window.location.replace(dest);
 }
@@ -853,5 +860,6 @@ export function applyLanguage(lang) {
 
 export function initLanguageSwitcher() {
   redirectLegacyLangParam();
+  redirectIndexHtml();
   applyLanguage(detectLanguage());
 }

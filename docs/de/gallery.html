@@ -46,10 +46,15 @@
     <script>
       (function () {
         try {
+          var path = location.pathname;
           var lang = new URLSearchParams(location.search).get("lang");
           if (lang === "fr" || lang === "de" || lang === "it" || lang === "ro") {
-            location.replace("/" + lang + "/gallery.html" + location.hash);
+            var leaf = /gallery\.html$/i.test(path) ? "gallery.html" : "";
+            location.replace("/" + lang + "/" + leaf + location.hash);
             return;
+          }
+          if (/\/index\.html$/i.test(path)) {
+            location.replace(path.replace(/\/index\.html$/i, "/") + location.search + location.hash);
           }
         } catch (e) {}
       })();
@@ -81,20 +86,20 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="../assets/main-CCI0s-aZ.js"></script>
+    <script type="module" crossorigin src="../assets/main-BPOftyhi.js"></script>
     <link rel="stylesheet" crossorigin href="../assets/main-CM41vyCW.css">
   </head>
   <body class="page-gallery">
     <div class="atmosphere" aria-hidden="true"></div>
 
     <header class="site-header is-scrolled" data-header>
-      <a class="logo" href="./index.html#top">Raluca Voinea</a>
+      <a class="logo" href="./#top">Raluca Voinea</a>
       <nav class="nav" data-i18n-aria="navPrimary" aria-label="Hauptnavigation">
-        <a href="./index.html#work" data-i18n="navWork">Werke</a>
+        <a href="./#work" data-i18n="navWork">Werke</a>
         <a class="is-current" href="./gallery.html" aria-current="page" data-i18n="navGallery">Galerie</a>
-        <a href="./index.html#services" data-i18n="navCollaborate">Kooperieren</a>
-        <a href="./index.html#about" data-i18n="navAbout">Über mich</a>
-        <a class="nav-cta" href="./index.html#contact" data-i18n="navStart">Projekt starten</a>
+        <a href="./#services" data-i18n="navCollaborate">Kooperieren</a>
+        <a href="./#about" data-i18n="navAbout">Über mich</a>
+        <a class="nav-cta" href="./#contact" data-i18n="navStart">Projekt starten</a>
       </nav>
       <div class="header-actions">
         <nav class="lang-switch" data-lang-switch data-i18n-aria="navLanguage" aria-label="Sprache">
@@ -104,15 +109,15 @@
           <a href="/it/gallery.html" data-lang="it" hreflang="it">IT</a>
           <a href="/ro/gallery.html" data-lang="ro" hreflang="ro">RO</a>
         </nav>
-        <a class="header-cta" href="./index.html" data-i18n="navHome">Start</a>
+        <a class="header-cta" href="./" data-i18n="navHome">Start</a>
       </div>
     </header>
 
     <nav class="mobile-dock" data-i18n-aria="navMobile" aria-label="Mobil">
-      <a href="./index.html#top" data-i18n="navHome">Start</a>
-      <a href="./index.html#work" data-i18n="navWork">Werke</a>
+      <a href="./#top" data-i18n="navHome">Start</a>
+      <a href="./#work" data-i18n="navWork">Werke</a>
       <a class="is-active" href="./gallery.html" aria-current="page" data-i18n="navGallery">Galerie</a>
-      <a href="./index.html#contact" data-i18n="navContact">Kontakt</a>
+      <a href="./#contact" data-i18n="navContact">Kontakt</a>
       <a href="#portraits" data-i18n="navSubjects">Themen</a>
     </nav>
 
@@ -121,7 +126,7 @@
         <div class="section-head">
           <p class="eyebrow" data-i18n="galleryEyebrow">Archiv</p>
           <h1 data-i18n="galleryTitle">Galerie nach Thema</h1>
-          <p data-i18n-html="galleryIntro">Gemälde und digitale Illustrationen aus dem Atelier in Neuchâtel, nach Thema geordnet. Jederzeit zurück zur <a href="./index.html">Hauptseite</a>.</p>
+          <p data-i18n-html="galleryIntro">Gemälde und digitale Illustrationen aus dem Atelier in Neuchâtel, nach Thema geordnet. Jederzeit zurück zur <a href="./">Hauptseite</a>.</p>
         </div>
 
         <nav class="subject-nav" data-i18n-aria="subjectsNav" aria-label="Themen">
@@ -411,8 +416,8 @@
 
       <section class="section">
         <div class="page-nav">
-          <a class="btn btn-ghost-dark" href="./index.html#work" data-i18n="backSelected">Zurück zu den ausgewählten Werken</a>
-          <a class="btn btn-primary" href="./index.html#contact" data-i18n="startCollab">Kooperation starten</a>
+          <a class="btn btn-ghost-dark" href="./#work" data-i18n="backSelected">Zurück zu den ausgewählten Werken</a>
+          <a class="btn btn-primary" href="./#contact" data-i18n="startCollab">Kooperation starten</a>
         </div>
       </section>
     </main>
@@ -423,7 +428,7 @@
         <p data-i18n="galleryFooter">Galerie nach Thema</p>
       </div>
       <p class="footer-credit">
-        <a href="./index.html" data-i18n="mainPage">Hauptseite</a> ·
+        <a href="./" data-i18n="mainPage">Hauptseite</a> ·
         <a href="https://www.instagram.com/ralu.voinea.illustration/" target="_blank" rel="noopener noreferrer"
           >@ralu.voinea.illustration</a
         >

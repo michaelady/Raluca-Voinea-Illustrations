@@ -46,10 +46,15 @@
     <script>
       (function () {
         try {
+          var path = location.pathname;
           var lang = new URLSearchParams(location.search).get("lang");
           if (lang === "fr" || lang === "de" || lang === "it" || lang === "ro") {
-            location.replace("/" + lang + "/" + location.hash);
+            var leaf = /gallery\.html$/i.test(path) ? "gallery.html" : "";
+            location.replace("/" + lang + "/" + leaf + location.hash);
             return;
+          }
+          if (/\/index\.html$/i.test(path)) {
+            location.replace(path.replace(/\/index\.html$/i, "/") + location.search + location.hash);
           }
         } catch (e) {}
       })();
@@ -132,7 +137,7 @@
     <div class="atmosphere" aria-hidden="true"></div>
 
     <header class="site-header" data-header>
-      <a class="logo" href="./index.html#top">Raluca Voinea</a>
+      <a class="logo" href="./#top">Raluca Voinea</a>
       <nav class="nav" data-i18n-aria="navPrimary" aria-label="Primary">
         <a href="#work" data-i18n="navWork">Work</a>
         <a href="./gallery.html" data-i18n="navGallery">Gallery</a>
