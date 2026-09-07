@@ -46,10 +46,15 @@
     <script>
       (function () {
         try {
+          var path = location.pathname;
           var lang = new URLSearchParams(location.search).get("lang");
           if (lang === "fr" || lang === "de" || lang === "it" || lang === "ro") {
-            location.replace("/" + lang + "/" + location.hash);
+            var leaf = /gallery\.html$/i.test(path) ? "gallery.html" : "";
+            location.replace("/" + lang + "/" + leaf + location.hash);
             return;
+          }
+          if (/\/index\.html$/i.test(path)) {
+            location.replace(path.replace(/\/index\.html$/i, "/") + location.search + location.hash);
           }
         } catch (e) {}
       })();
@@ -126,14 +131,14 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="../assets/main-CCI0s-aZ.js"></script>
+    <script type="module" crossorigin src="../assets/main-BPOftyhi.js"></script>
     <link rel="stylesheet" crossorigin href="../assets/main-CM41vyCW.css">
   </head>
   <body>
     <div class="atmosphere" aria-hidden="true"></div>
 
     <header class="site-header" data-header>
-      <a class="logo" href="./index.html#top">Raluca Voinea</a>
+      <a class="logo" href="./#top">Raluca Voinea</a>
       <nav class="nav" data-i18n-aria="navPrimary" aria-label="Principale">
         <a href="#work" data-i18n="navWork">Opere</a>
         <a href="./gallery.html" data-i18n="navGallery">Galleria</a>

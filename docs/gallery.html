@@ -46,10 +46,15 @@
     <script>
       (function () {
         try {
+          var path = location.pathname;
           var lang = new URLSearchParams(location.search).get("lang");
           if (lang === "fr" || lang === "de" || lang === "it" || lang === "ro") {
-            location.replace("/" + lang + "/gallery.html" + location.hash);
+            var leaf = /gallery\.html$/i.test(path) ? "gallery.html" : "";
+            location.replace("/" + lang + "/" + leaf + location.hash);
             return;
+          }
+          if (/\/index\.html$/i.test(path)) {
+            location.replace(path.replace(/\/index\.html$/i, "/") + location.search + location.hash);
           }
         } catch (e) {}
       })();
@@ -81,20 +86,20 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Gloock&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/main-CCI0s-aZ.js"></script>
+    <script type="module" crossorigin src="./assets/main-BPOftyhi.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/main-CM41vyCW.css">
   </head>
   <body class="page-gallery">
     <div class="atmosphere" aria-hidden="true"></div>
 
     <header class="site-header is-scrolled" data-header>
-      <a class="logo" href="./index.html#top">Raluca Voinea</a>
+      <a class="logo" href="./#top">Raluca Voinea</a>
       <nav class="nav" data-i18n-aria="navPrimary" aria-label="Primary">
-        <a href="./index.html#work" data-i18n="navWork">Work</a>
+        <a href="./#work" data-i18n="navWork">Work</a>
         <a class="is-current" href="./gallery.html" aria-current="page" data-i18n="navGallery">Gallery</a>
-        <a href="./index.html#services" data-i18n="navCollaborate">Collaborate</a>
-        <a href="./index.html#about" data-i18n="navAbout">About</a>
-        <a class="nav-cta" href="./index.html#contact" data-i18n="navStart">Start a project</a>
+        <a href="./#services" data-i18n="navCollaborate">Collaborate</a>
+        <a href="./#about" data-i18n="navAbout">About</a>
+        <a class="nav-cta" href="./#contact" data-i18n="navStart">Start a project</a>
       </nav>
       <div class="header-actions">
         <nav class="lang-switch" data-lang-switch data-i18n-aria="navLanguage" aria-label="Language">
@@ -104,15 +109,15 @@
           <a href="/it/gallery.html" data-lang="it" hreflang="it">IT</a>
           <a href="/ro/gallery.html" data-lang="ro" hreflang="ro">RO</a>
         </nav>
-        <a class="header-cta" href="./index.html" data-i18n="navHome">Home</a>
+        <a class="header-cta" href="./" data-i18n="navHome">Home</a>
       </div>
     </header>
 
     <nav class="mobile-dock" data-i18n-aria="navMobile" aria-label="Mobile">
-      <a href="./index.html#top" data-i18n="navHome">Home</a>
-      <a href="./index.html#work" data-i18n="navWork">Work</a>
+      <a href="./#top" data-i18n="navHome">Home</a>
+      <a href="./#work" data-i18n="navWork">Work</a>
       <a class="is-active" href="./gallery.html" aria-current="page" data-i18n="navGallery">Gallery</a>
-      <a href="./index.html#contact" data-i18n="navContact">Contact</a>
+      <a href="./#contact" data-i18n="navContact">Contact</a>
       <a href="#portraits" data-i18n="navSubjects">Subjects</a>
     </nav>
 
@@ -124,7 +129,7 @@
           <p data-i18n-html="galleryIntro">
             Paintings and digital illustrations from the Neuchâtel studio, grouped by theme.
             Jump back anytime to the
-            <a href="./index.html">main page</a>.
+            <a href="./">main page</a>.
           </p>
         </div>
 
@@ -415,8 +420,8 @@
 
       <section class="section">
         <div class="page-nav">
-          <a class="btn btn-ghost-dark" href="./index.html#work" data-i18n="backSelected">Back to selected works</a>
-          <a class="btn btn-primary" href="./index.html#contact" data-i18n="startCollab">Start a collaboration</a>
+          <a class="btn btn-ghost-dark" href="./#work" data-i18n="backSelected">Back to selected works</a>
+          <a class="btn btn-primary" href="./#contact" data-i18n="startCollab">Start a collaboration</a>
         </div>
       </section>
     </main>
@@ -427,7 +432,7 @@
         <p data-i18n="galleryFooter">Gallery by subject</p>
       </div>
       <p class="footer-credit">
-        <a href="./index.html" data-i18n="mainPage">Main page</a> ·
+        <a href="./" data-i18n="mainPage">Main page</a> ·
         <a href="https://www.instagram.com/ralu.voinea.illustration/" target="_blank" rel="noopener noreferrer"
           >@ralu.voinea.illustration</a
         >
